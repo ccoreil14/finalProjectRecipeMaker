@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">REM</string>
+    <string name="recipeBtnText">Add Recipe</string>
+    <string name="ccBtnText">Conversion Calculator</string>
 </resources>
