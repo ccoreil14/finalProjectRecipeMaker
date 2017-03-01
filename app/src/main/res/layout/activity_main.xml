@@ -10,31 +10,61 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="drawapptutorial.com.example.rem.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_height="700px"
+        android:background="#DDD"
+        android:id="@+id/recipeList"
+        android:isScrollContainer="false" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/addRecipe"
-        android:text="@string/recipeBtnText"
-        android:onClick="addNew"
-        android:layout_marginTop="22dp"
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="80px"
+        android:background="#EEE"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/convCalc"
+        android:id="@+id/button"
         android:text="@string/ccBtnText"
         android:onClick="convCalc"
-        android:layout_marginLeft="22dp"
-        android:layout_marginStart="22dp"
-        android:layout_alignBaseline="@+id/addRecipe"
-        android:layout_alignBottom="@+id/addRecipe"
-        android:layout_toRightOf="@+id/addRecipe"
-        android:layout_toEndOf="@+id/addRecipe" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="90px" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_alignBottom="@+id/button"
+        android:layout_height="40px"
+        android:layout_toRightOf="@+id/button2"
+        android:orientation="horizontal"
+        android:paddingLeft="20px">
+        <RadioButton
+            android:layout_width="109dp"
+            android:layout_height="wrap_content"
+            android:text="Search By Name" />
+
+        <RadioButton
+            android:layout_width="93dp"
+            android:layout_height="wrap_content"
+            android:text="SearchBy Tag"
+            android:layout_marginLeft="10px" />
+    </RadioGroup>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:text="@string/recipeBtnText"
+        android:onClick="addNew"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="90px" />
+
 </RelativeLayout>
