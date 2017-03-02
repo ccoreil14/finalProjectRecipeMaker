@@ -2,4 +2,10 @@
     <string name="app_name">REM</string>
     <string name="recipeBtnText">Add Recipe</string>
     <string name="ccBtnText">Conversion Calculator</string>
+    <string-array name="step_item_types">
+        <item>Specifics</item>
+        <item>Bake</item>
+        <item>Boil</item>
+        <item>Microwave</item>
+    </string-array>
 </resources>

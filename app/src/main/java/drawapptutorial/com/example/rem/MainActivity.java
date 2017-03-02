@@ -14,16 +14,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        addRecipe = (Button) findViewById(R.id.addRecipe);
+//        addRecipe = (Button) findViewById(R.id.addRecipe);
 
     }
 
     public void addNew(View v){
-        Intent i = new Intent(this,RecipeForm.class);
+        Intent i = new Intent(this,AddRecipeForm.class);
         startActivity(i);
     }
 
     public void convCalc(View v){
         //Go to convCalc activity
     }
+
+    public static String strSeparator = "__,__";
+    public static String convertArrayToString(String[] array){
+        String str = "";
+        for (int i = 0;i<array.length; i++) {
+            str = str+array[i];
+            // Do not append comma at the end of last element
+            if(i<array.length-1){
+                str = str+strSeparator;
+            }
+        }
+        return str;
+    }
+    public static String[] convertStringToArray(String str){
+        String[] arr = str.split(strSeparator);
+        return arr;
+    }
+
 }
