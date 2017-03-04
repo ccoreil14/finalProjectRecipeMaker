@@ -1,5 +1,7 @@
 package drawapptutorial.com.example.rem;
 
+import android.util.Log;
+
 /**
  * Created by Christian Coreil on 3/1/2017.
  */
@@ -10,27 +12,24 @@ public class RecipeObj {
     private String description;
     private int totalTime;
     private String[] tags;
-    private RecipeStepObj[] stepArray;
 
     public RecipeObj(){
 
     }
 
-    public RecipeObj(int id, String name, String description, int totalTime, String[] tags, RecipeStepObj[] stepArray){
+    public RecipeObj(int id, String name, String description, int totalTime, String[] tags){
         this.id = id;
         this.name = name;
         this.description = description;
         this.totalTime = totalTime;
         this.tags = tags;
-        this.stepArray = stepArray;
     }
 
-    public RecipeObj(String name, String description, int totalTime, String[] tags, RecipeStepObj[] stepArray){
+    public RecipeObj(String name, String description, int totalTime, String[] tags){
         this.name = name;
         this.description = description;
         this.totalTime = totalTime;
         this.tags = tags;
-        this.stepArray = stepArray;
     }
 
     public void setId(int id) {
@@ -53,11 +52,22 @@ public class RecipeObj {
 
     public void setTags(String[] tags) {this.tags = tags; }
     public String[] getTags() {return this.tags;}
+    public String getTagsAsString(){
+        String tagString = "";
+        String[] array = this.tags;
+        for(int i =0; i< array.length;i++){
+            if(i< array.length) {
+                tagString += this.tags[i] + ",";
+            }else{
+                tagString += this.tags[i];
+            }
+        }
 
-    public void setDesc(RecipeStepObj[] stepArray) {
-        this.stepArray = stepArray;
+        Log.d("tagString",tagString);
+
+        return tagString;
     }
-    public RecipeStepObj[] getStepArray() {return this.stepArray;}
+
 
 
 }

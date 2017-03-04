@@ -5,44 +5,63 @@ package drawapptutorial.com.example.rem;
  */
 
 public class RecipeStepObj {
-    private String stepText;
+    private int id;
+    private int recipeId;
+    private String stepDesc;
     private int timeOfStep;
-    private String microwaveHeatLevel;
-    private int stoveHeatNum;
+    private String heatLevel;
+    private int stepOrderNumber;
 
     public RecipeStepObj(){
 
     }
 
-    public RecipeStepObj( String stepText, int timeOfStep){
-        this.stepText = stepText;
+    public RecipeStepObj(int id, int recipeId, String stepText, int timeOfStep, String heatLevel, int stepOrderNumber){
+        this.id = id;
+        this.recipeId = recipeId;
+        this.stepDesc = stepText;
         this.timeOfStep = timeOfStep;
+        this.heatLevel = heatLevel;
+        this.stepOrderNumber = stepOrderNumber;
     }
 
-    public RecipeStepObj( String stepText, int timeOfStep, String microwaveHeatLevel){
-        this.stepText = stepText;
+    public RecipeStepObj( String stepText, int timeOfStep, String heatLevel, int stepOrderNumber){
+        this.stepDesc = stepText;
         this.timeOfStep = timeOfStep;
-        this.microwaveHeatLevel = microwaveHeatLevel;
+        this.heatLevel = heatLevel;
+        this.stepOrderNumber = stepOrderNumber;
     }
 
-    public RecipeStepObj( String stepText, int timeOfStep, int stoveHeatNum){
-        this.stepText = stepText;
-        this.timeOfStep = timeOfStep;
-        this.stoveHeatNum = stoveHeatNum;
+    public void setId(int id) {
+        this.id = id;
     }
+    public int getId() {return this.id;}
 
-    public void setStepText(String stepText) {
-        this.stepText = stepText;
+    public void setRecipeId(int id) {
+        this.recipeId = id;
     }
-    public String getStepText() {return this.stepText;}
+    public int getRecipeId() {return this.recipeId;}
 
-    public void setStepText(int timeOfStep) {
+    public void setStepDesc(String stepDesc) {
+        this.stepDesc = stepDesc;
+    }
+    public String getStepDesc() {return this.stepDesc;}
+
+    public void setHeatLevel(String heatLevel) {
+        this.heatLevel = heatLevel;
+    }
+    public String getHeatLevel() {return this.heatLevel;}
+
+   public void setTimeOfStep(int timeOfStep) {
         this.timeOfStep = timeOfStep;
     }
     public int getTimeOfStep() {return this.timeOfStep;}
 
-    public void setMicrowaveHeatLevel(String microwaveHeatLevel) {
-        this.microwaveHeatLevel = microwaveHeatLevel;
+    public void setStepOrderNumber(int stepOrderNumber){
+        this.stepOrderNumber = stepOrderNumber;
     }
-    public String getMicrowaveHeatLevel() {return this.microwaveHeatLevel;}
+
+    public int getStepOrderNumber(){
+        return this.stepOrderNumber;
+    }
 }
