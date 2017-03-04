@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -72,7 +73,7 @@ public class MainDB extends SQLiteOpenHelper {
                 recipe.setName(cursor.getString(1));
                 recipe.setDescription(cursor.getString(2));
                 recipe.setTotalTime(Integer.parseInt(cursor.getString(3)));
-                recipe.setTags(cursor.getString(4).split(","));
+                recipe.setTags(Arrays.asList(cursor.getString(4).split(",")));
 
                 recipeList.add(recipe);
             } while (cursor.moveToNext());
@@ -126,7 +127,7 @@ public class MainDB extends SQLiteOpenHelper {
     }
 
     // Deleting a shop
-    public void deleteTask(RecipeObj recipe) {
+    public void deleteRecipe(RecipeObj recipe) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_RECIPES, KEY_ID + " = ?",
                 new String[] { String.valueOf(recipe.getId()) });

@@ -114,7 +114,7 @@ public class StepDB extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 
-    public int updateRecipe(RecipeStepObj step) {
+    public int updateStep(RecipeStepObj step) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -130,7 +130,7 @@ public class StepDB extends SQLiteOpenHelper {
     }
 
     // Deleting a shop
-    public void deleteTask(RecipeStepObj step) {
+    public void deleteSteps(RecipeStepObj step) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_STEPS, KEY_ID + " = ?",
                 new String[] { String.valueOf(step.getId()) });

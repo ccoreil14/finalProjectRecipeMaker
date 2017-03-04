@@ -2,6 +2,8 @@ package drawapptutorial.com.example.rem;
 
 import android.util.Log;
 
+import java.util.List;
+
 /**
  * Created by Christian Coreil on 3/1/2017.
  */
@@ -11,13 +13,13 @@ public class RecipeObj {
     private String name;
     private String description;
     private int totalTime;
-    private String[] tags;
+    private List<String> tags;
 
     public RecipeObj(){
 
     }
 
-    public RecipeObj(int id, String name, String description, int totalTime, String[] tags){
+    public RecipeObj(int id, String name, String description, int totalTime, List<String> tags){
         this.id = id;
         this.name = name;
         this.description = description;
@@ -25,7 +27,7 @@ public class RecipeObj {
         this.tags = tags;
     }
 
-    public RecipeObj(String name, String description, int totalTime, String[] tags){
+    public RecipeObj(String name, String description, int totalTime, List<String> tags){
         this.name = name;
         this.description = description;
         this.totalTime = totalTime;
@@ -50,18 +52,27 @@ public class RecipeObj {
     public void setTotalTime(int totalTime) {this.totalTime = totalTime; }
     public int getTotalTime() {return totalTime;}
 
-    public void setTags(String[] tags) {this.tags = tags; }
-    public String[] getTags() {return this.tags;}
+    public void setTags(List<String> tags) {this.tags = tags; }
+    public List<String> getTags() {return this.tags;}
     public String getTagsAsString(){
         String tagString = "";
-        String[] array = this.tags;
-        for(int i =0; i< array.length;i++){
-            if(i< array.length) {
-                tagString += this.tags[i] + ",";
+        int i = 0;
+        List<String> tagList = this.tags;
+        for (String yo: tagList) {
+            if(i < tagList.size()) {
+                i++;
+                tagString += yo + ",";
             }else{
-                tagString += this.tags[i];
+                tagString += yo;
             }
         }
+//        for(int i =0; i< tagList.size();i++){
+//            if(i< tagList.size()) {
+//                tagString += tagList.f + ",";
+//            }else{
+//                tagString += tagList[i];
+//            }
+//        }
 
         Log.d("tagString",tagString);
 
