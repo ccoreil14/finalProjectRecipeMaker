@@ -1,6 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <Spinner
+        android:id="@+id/fromSpinner"
+        android:layout_width="100px"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/userInput"
+        android:layout_alignEnd="@+id/userInput" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="From"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_marginRight="58dp"
+        android:layout_marginEnd="58dp"
+        android:layout_alignTop="@+id/fromSpinner"
+        android:layout_toLeftOf="@+id/userInput"
+        android:layout_toStartOf="@+id/userInput" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_alignTop="@+id/toSpinner"
+        android:layout_toRightOf="@+id/returnBtn"
+        android:layout_toEndOf="@+id/returnBtn" />
+
+    <Spinner
+        android:id="@+id/toSpinner"
+        android:layout_width="100px"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2"
+        android:layout_alignTop="@+id/fromSpinner" />
+
+    <TextView
+        android:id="@+id/userInput"
+        android:layout_width="50px"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="139dp"
+        android:hint="2"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_below="@+id/fromSpinner"
+        android:layout_toLeftOf="@+id/returnBtn"
+        android:layout_toStartOf="@+id/returnBtn" />
+
+    <TextView
+        android:id="@+id/measurement1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Measurement 1"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp"
+        android:layout_alignBaseline="@+id/userInput"
+        android:layout_alignBottom="@+id/userInput"
+        android:layout_alignLeft="@+id/returnBtn"
+        android:layout_alignStart="@+id/returnBtn" />
+
+    <TextView
+        android:id="@+id/measurement2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Measurement 2"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/conversionOutput"
+        android:layout_alignBottom="@+id/conversionOutput"
+        android:layout_alignLeft="@+id/measurement1"
+        android:layout_alignStart="@+id/measurement1" />
+
+    <TextView
+        android:id="@+id/conversionOutput"
+        android:layout_width="50px"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:hint="2"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_below="@+id/userInput"
+        android:layout_alignLeft="@+id/userInput"
+        android:layout_alignStart="@+id/userInput" />
+
+    <Button
+        android:id="@+id/returnBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/returnBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:text="Return" />
+
+    <Button
+        android:id="@+id/returnBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/measurement2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="97dp"
+        android:text="Convert" />
+</RelativeLayout>
