@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     public void addNew(View v){
         Intent i = new Intent(this,AddRecipeForm.class);
         startActivity(i);
+        //comment for christian
     }
 
     public void convCalc(View v){
