@@ -25,7 +25,8 @@ public class RecipeStepObj {
         this.stepOrderNumber = stepOrderNumber;
     }
 
-    public RecipeStepObj( String stepText, int timeOfStep, String heatLevel, int stepOrderNumber){
+    public RecipeStepObj(int recipeId,String stepText, int timeOfStep, String heatLevel, int stepOrderNumber){
+        this.recipeId = recipeId;
         this.stepDesc = stepText;
         this.timeOfStep = timeOfStep;
         this.heatLevel = heatLevel;
