@@ -14,24 +14,27 @@ public class RecipeObj {
     private String description;
     private int totalTime;
     private List<String> tags;
+    private List<String> ingredients;
 
     public RecipeObj(){
 
     }
 
-    public RecipeObj(int id, String name, String description, int totalTime, List<String> tags){
+    public RecipeObj(int id, String name, String description, int totalTime, List<String> tags, List<String> ingredients){
         this.id = id;
         this.name = name;
         this.description = description;
         this.totalTime = totalTime;
         this.tags = tags;
+        this.ingredients = ingredients;
     }
 
-    public RecipeObj(String name, String description, int totalTime, List<String> tags){
+    public RecipeObj(String name, String description, int totalTime, List<String> tags, List<String> ingredients){
         this.name = name;
         this.description = description;
         this.totalTime = totalTime;
         this.tags = tags;
+        this.ingredients = ingredients;
     }
 
     public void setId(int id) {
@@ -54,10 +57,10 @@ public class RecipeObj {
 
     public void setTags(List<String> tags) {this.tags = tags; }
     public List<String> getTags() {return this.tags;}
-    public String getTagsAsString(){
+    public String getListAsString(List<String> input){
         String tagString = "";
         int i = 0;
-        List<String> tagList = this.tags;
+        List<String> tagList = input;
         for (String yo: tagList) {
             if(i < tagList.size()) {
                 i++;
@@ -77,6 +80,11 @@ public class RecipeObj {
         Log.d("tagString",tagString);
 
         return tagString;
+    }
+
+    public void setIngredients(List<String> ingredients){ this.ingredients = ingredients;}
+    public List<String> getIngredients(){
+        return this.ingredients;
     }
 
 

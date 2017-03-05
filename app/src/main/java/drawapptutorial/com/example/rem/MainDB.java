@@ -25,6 +25,7 @@ public class MainDB extends SQLiteOpenHelper {
     private static final String KEY_DESC = "recipe_description";
     private static final String KEY_TOTAL_TIME = "recipe_total_time";
     private static final String KEY_TAGS = "recipe_tags";
+    private static final String KEY_INGREDIENTS = "recipe_ingredients";
 
 
     public MainDB(Context context) {
@@ -38,7 +39,8 @@ public class MainDB extends SQLiteOpenHelper {
                 + KEY_NAME + " TEXT,"
                 + KEY_DESC + " TEXT,"
                 + KEY_TOTAL_TIME + " NUMBER,"
-                + KEY_TAGS + " TEXT" + ")";
+                + KEY_TAGS + " TEXT,"
+                + KEY_INGREDIENTS + " TEXT" + ")";
         db.execSQL(CREATE_TASK_TABLE);
         onCreate(db);
     }
@@ -57,7 +59,8 @@ public class MainDB extends SQLiteOpenHelper {
         values.put(KEY_NAME, recipe.getName());
         values.put(KEY_DESC, recipe.getDescription());
         values.put(KEY_TOTAL_TIME, recipe.getTotalTime());
-        values.put(KEY_TAGS, recipe.getTagsAsString());
+        values.put(KEY_TAGS, recipe.getListAsString(recipe.getTags()));
+        values.put(KEY_INGREDIENTS, recipe.getListAsString(recipe.getIngredients()));
 
 // Inserting Row
         db.insert(TABLE_RECIPES, null, values);
@@ -74,6 +77,7 @@ public class MainDB extends SQLiteOpenHelper {
                 recipe.setDescription(cursor.getString(2));
                 recipe.setTotalTime(Integer.parseInt(cursor.getString(3)));
                 recipe.setTags(Arrays.asList(cursor.getString(4).split(",")));
+                recipe.setIngredients(Arrays.asList(cursor.getString(5).split(",")));
 
                 recipeList.add(recipe);
             } while (cursor.moveToNext());
@@ -119,7 +123,8 @@ public class MainDB extends SQLiteOpenHelper {
         values.put(KEY_NAME, recipe.getName());
         values.put(KEY_DESC, recipe.getDescription());
         values.put(KEY_TOTAL_TIME, recipe.getTotalTime());
-        values.put(KEY_TAGS, recipe.getTagsAsString());
+        values.put(KEY_TAGS, recipe.getListAsString(recipe.getTags()));
+        values.put(KEY_INGREDIENTS, recipe.getListAsString(recipe.getIngredients()));
 
 // updating row
         return db.update(TABLE_RECIPES, values, KEY_ID + " = ?",
