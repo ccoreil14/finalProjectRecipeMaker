@@ -122,6 +122,7 @@ public class MainDB extends SQLiteOpenHelper {
         String selectQuery = "SELECT * FROM " + TABLE_RECIPES + " ORDER BY ID DESC LIMIT 1";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
+        cursor.moveToFirst();
         recipe_id = Integer.parseInt(cursor.getString(0));
         return recipe_id;
     }

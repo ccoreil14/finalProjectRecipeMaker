@@ -46,7 +46,7 @@
         android:layout_toEndOf="@+id/textView2"
         android:layout_alignTop="@+id/fromSpinner" />
 
-    <TextView
+    <EditText
         android:id="@+id/userInput"
         android:layout_width="50px"
         android:layout_height="wrap_content"
@@ -56,7 +56,8 @@
         android:textSize="20sp"
         android:layout_below="@+id/fromSpinner"
         android:layout_toLeftOf="@+id/returnBtn"
-        android:layout_toStartOf="@+id/returnBtn" />
+        android:layout_toStartOf="@+id/returnBtn"
+        android:inputType="numberDecimal" />
 
     <TextView
         android:id="@+id/measurement1"
