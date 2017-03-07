@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 
 public class MainDB extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     private static final String DATABASE_NAME = "recipeBook";
 
     private static final String TABLE_RECIPES = "recipes";
@@ -42,7 +43,7 @@ public class MainDB extends SQLiteOpenHelper {
                 + KEY_TAGS + " TEXT,"
                 + KEY_INGREDIENTS + " TEXT" + ")";
         db.execSQL(CREATE_TASK_TABLE);
-        onCreate(db);
+
     }
 
     @Override
@@ -118,10 +119,10 @@ public class MainDB extends SQLiteOpenHelper {
 
     public int getLastRecipeId(){
         int recipe_id;
-        String selectQuery = "SELECT * LAST(id) " + TABLE_RECIPES;
+        String selectQuery = "SELECT * FROM " + TABLE_RECIPES + " ORDER BY ID DESC LIMIT 1";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
-        recipe_id = cursor.getInt(0);
+        recipe_id = Integer.parseInt(cursor.getString(0));
         return recipe_id;
     }
 
