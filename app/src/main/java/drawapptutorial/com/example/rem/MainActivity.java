@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         int step6StepNum = 3;
 
         RecipeStepObj step6Rep2 = new RecipeStepObj(step6RecipeId, step6Desc, step6Minutes, step6Heat, step6StepNum);
-        stepDB.addStep(step2Rep1);
+        stepDB.addStep(step6Rep2);
 
 
     }
