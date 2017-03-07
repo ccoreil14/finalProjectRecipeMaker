@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddRecipeForm"></activity>
-        <activity android:name=".convCalc"></activity>
+        <activity android:name=".ConverterActivity"></activity>
     </application>
 
 </manifest>

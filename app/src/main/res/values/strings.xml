@@ -1,16 +1,43 @@
 <resources>
+
     <string name="app_name">REM</string>
     <string name="recipeBtnText">Add Recipe</string>
     <string name="ccBtnText">Conversion Calculator</string>
+
     <string-array name="step_item_types">
         <item>Details</item>
         <item>Timer</item>
         <item>Oven</item>
         <item>Microwave</item>
     </string-array>
+
     <string-array name="microwave_power_options">
         <item>Low Heat</item>
         <item>Medium Heat</item>
         <item>High Heat</item>
     </string-array>
+
+    <string-array name="measurements">
+        <item>Milliliters</item>
+        <item>Liter</item>
+        <item>Gram</item>
+        <item>Kilogram</item>
+        <item>Fluid Ounce (US)</item>
+        <item>Fluid Ounce (IMP)</item>
+        <item>Teaspoon</item>
+        <item>Teaspoon (US)</item>
+        <item>Tablespoon</item>
+        <item>Tablespoon (US)</item>
+        <item>Cup</item>
+        <item>Cup (US)</item>
+        <item>Cup (IMP)</item>
+        <item>Pint</item>
+        <item>Pint (US)</item>
+        <item>Pint (IMP)</item>
+        <item>Quart (US)</item>
+        <item>Quart (IMP)</item>
+        <item>Gallon (US)</item>
+        <item>Gallon (IMP)</item>
+    </string-array>
+
 </resources>

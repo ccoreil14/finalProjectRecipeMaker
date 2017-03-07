@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void convCalc(View v){
-        //Go to convCalc activity
-        Intent i = new Intent(this, convCalc.class);
+        //Go to ConverterActivity activity
+        Intent i = new Intent(this, ConverterActivity.class);
         startActivity(i);
     }
 
