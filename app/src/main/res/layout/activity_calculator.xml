@@ -100,13 +100,13 @@
         android:id="@+id/returnBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/returnBtn"
+        android:layout_below="@+id/convertBtn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp"
         android:text="Return" />
 
     <Button
-        android:id="@+id/returnBtn"
+        android:id="@+id/convertBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/measurement2"

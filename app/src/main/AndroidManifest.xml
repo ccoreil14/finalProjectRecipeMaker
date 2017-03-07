@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddRecipeForm"></activity>
+        <activity android:name=".convCalc"></activity>
     </application>
 
 </manifest>
