@@ -15,8 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddRecipeForm"></activity>
-        <activity android:name=".convCalc"></activity>
+        <activity android:name=".AddRecipeForm" />
+        <activity android:name=".convCalc" />
+        <activity android:name=".traditionalRecipe"></activity>
     </application>
 
 </manifest>

@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
     Button addRecipe;
     private MainDB mainDB;
     private StepDB stepDB;
+    private List<RecipeObj> recipes;
+    private ListView recipeList;
+    private ArrayAdapter<RecipeObj> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +28,12 @@ public class MainActivity extends AppCompatActivity {
 //        stepDB = new StepDB(this);
         addHardCodedItemsToDatabase();
 //        addRecipe = (Button) findViewById(R.id.addRecipe);
+
+        recipes = mainDB.getAllRecipies();
+        recipeList = (ListView) findViewById(R.id.recipeList);
+        adapter = new ArrayAdapter<RecipeObj>(this,R.layout.activity_listview,recipes);
+        recipeList.setAdapter(adapter);
+
 
     }
 
@@ -34,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
     public void convCalc(View v){
         //Go to convCalc activity
         Intent i = new Intent(this, convCalc.class);
+        startActivity(i);
+    }
+
+    public void viewRecipeTraditional(View v){
+        Intent i = new Intent(this,traditionalRecipe.class);
         startActivity(i);
     }
 
