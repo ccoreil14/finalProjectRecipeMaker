@@ -67,6 +67,27 @@ public class MainDB extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
+    public RecipeObj getRecipe(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_RECIPES, new String[]{KEY_ID, KEY_NAME,
+                        KEY_DESC, KEY_TOTAL_TIME, KEY_TAGS, KEY_INGREDIENTS}, KEY_ID + "=?",
+                new String[]{String.valueOf(id)}, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+
+        RecipeObj information = new RecipeObj(
+                cursor.getString(1),
+                cursor.getString(2),
+                Integer.parseInt(cursor.getString(3)),
+                Arrays.asList(cursor.getString(4).split(",")),
+                Arrays.asList(cursor.getString(5).split(",")));
+// return shop
+        return information;
+    }
+
+
     public List<RecipeObj> getRecipeList(Cursor cursor){
         List<RecipeObj> recipeList = new ArrayList<>();
         if (cursor.moveToFirst()) {
@@ -87,13 +108,21 @@ public class MainDB extends SQLiteOpenHelper {
     }
 
     public List<RecipeObj> getAllRecpies() {
-
         String selectQuery = "SELECT * FROM " + TABLE_RECIPES;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         return getRecipeList(cursor);
+    }
+
+    public int getLastRecipeId(){
+        int recipe_id;
+        String selectQuery = "SELECT * LAST(id) " + TABLE_RECIPES;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        recipe_id = cursor.getInt(0);
+        return recipe_id;
     }
 
     public List<RecipeObj> getRecipesAlphabetized(){
