@@ -108,7 +108,7 @@ public class MainDB extends SQLiteOpenHelper {
         return recipeList;
     }
 
-    public List<RecipeObj> getAllRecpies() {
+    public List<RecipeObj> getAllRecipies() {
         String selectQuery = "SELECT * FROM " + TABLE_RECIPES;
 
         SQLiteDatabase db = this.getWritableDatabase();
