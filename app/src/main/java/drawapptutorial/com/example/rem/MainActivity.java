@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mainDB = new MainDB(this);
+//        stepDB = new StepDB(this);
         addHardCodedItemsToDatabase();
 //        addRecipe = (Button) findViewById(R.id.addRecipe);
 
@@ -53,35 +55,35 @@ public class MainActivity extends AppCompatActivity {
         RecipeObj recipe1 = new RecipeObj(name, desc, totalTime, tags, ingredients);
         mainDB.addRecipe(recipe1);
 
-
-
-        int step1RecipeId = mainDB.getLastRecipeId();
-        String step1Desc = "Take the dough out the package";
-        int step1Minutes = 10;
-        String step1Heat = "None";
-        int step1StepNum = 1;
-
-        RecipeStepObj step1Rep1 = new RecipeStepObj(step1RecipeId, step1Desc, step1Minutes, step1Heat, step1StepNum);
-        stepDB.addStep(step1Rep1);
-
-        int step2RecipeId = mainDB.getLastRecipeId();
-        String step2Desc = "Put stuff on";
-        int step2Minutes = 5;
-        String step2Heat = "None";
-        int step2StepNum = 2;
-
-        RecipeStepObj step2Rep1 = new RecipeStepObj(step2RecipeId, step2Desc, step2Minutes, step2Heat, step2StepNum);
-        stepDB.addStep(step2Rep1);
-
-
-        int step3RecipeId = mainDB.getLastRecipeId();
-        String step3Desc = "Cook it then enjoy";
-        int step3Minutes = 30;
-        String step3Heat = "400 degrees";
-        int step3StepNum = 3;
-
-        RecipeStepObj step3Rep1 = new RecipeStepObj(step3RecipeId, step3Desc, step3Minutes, step3Heat, step3StepNum);
-        stepDB.addStep(step2Rep1);
+//
+//
+//        int step1RecipeId = mainDB.getLastRecipeId();
+//        String step1Desc = "Take the dough out the package";
+//        int step1Minutes = 10;
+//        String step1Heat = "None";
+//        int step1StepNum = 1;
+//
+//        RecipeStepObj step1Rep1 = new RecipeStepObj(step1RecipeId, step1Desc, step1Minutes, step1Heat, step1StepNum);
+//        stepDB.addStep(step1Rep1);
+//
+//        int step2RecipeId = mainDB.getLastRecipeId();
+//        String step2Desc = "Put stuff on";
+//        int step2Minutes = 5;
+//        String step2Heat = "None";
+//        int step2StepNum = 2;
+//
+//        RecipeStepObj step2Rep1 = new RecipeStepObj(step2RecipeId, step2Desc, step2Minutes, step2Heat, step2StepNum);
+//        stepDB.addStep(step2Rep1);
+//
+//
+//        int step3RecipeId = mainDB.getLastRecipeId();
+//        String step3Desc = "Cook it then enjoy";
+//        int step3Minutes = 30;
+//        String step3Heat = "400 degrees";
+//        int step3StepNum = 3;
+//
+//        RecipeStepObj step3Rep1 = new RecipeStepObj(step3RecipeId, step3Desc, step3Minutes, step3Heat, step3StepNum);
+//        stepDB.addStep(step3Rep1);
 
 
         String name2 = "Awesome Pizza";
@@ -101,33 +103,33 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        int step4RecipeId = mainDB.getLastRecipeId();
-        String step4Desc = "Take the dough out the package";
-        int step4Minutes = 10;
-        String step4Heat = "None";
-        int step4StepNum = 1;
-
-        RecipeStepObj step4Rep2 = new RecipeStepObj(step4RecipeId, step4Desc, step4Minutes, step4Heat, step4StepNum);
-        stepDB.addStep(step4Rep2);
-
-        int step5RecipeId = mainDB.getLastRecipeId();
-        String step5Desc = "Put stuff on";
-        int step5Minutes = 5;
-        String step5Heat = "None";
-        int step5StepNum = 2;
-
-        RecipeStepObj step5Rep2 = new RecipeStepObj(step5RecipeId, step5Desc, step5Minutes, step5Heat, step5StepNum);
-        stepDB.addStep(step5Rep2);
-
-
-        int step6RecipeId = mainDB.getLastRecipeId();
-        String step6Desc = "Cook it then enjoy";
-        int step6Minutes = 30;
-        String step6Heat = "400 degrees";
-        int step6StepNum = 3;
-
-        RecipeStepObj step6Rep2 = new RecipeStepObj(step6RecipeId, step6Desc, step6Minutes, step6Heat, step6StepNum);
-        stepDB.addStep(step6Rep2);
+//        int step4RecipeId = mainDB.getLastRecipeId();
+//        String step4Desc = "Take the dough out the package";
+//        int step4Minutes = 10;
+//        String step4Heat = "None";
+//        int step4StepNum = 1;
+//
+//        RecipeStepObj step4Rep2 = new RecipeStepObj(step4RecipeId, step4Desc, step4Minutes, step4Heat, step4StepNum);
+//        stepDB.addStep(step4Rep2);
+//
+//        int step5RecipeId = mainDB.getLastRecipeId();
+//        String step5Desc = "Put stuff on";
+//        int step5Minutes = 5;
+//        String step5Heat = "None";
+//        int step5StepNum = 2;
+//
+//        RecipeStepObj step5Rep2 = new RecipeStepObj(step5RecipeId, step5Desc, step5Minutes, step5Heat, step5StepNum);
+//        stepDB.addStep(step5Rep2);
+//
+//
+//        int step6RecipeId = mainDB.getLastRecipeId();
+//        String step6Desc = "Cook it then enjoy";
+//        int step6Minutes = 30;
+//        String step6Heat = "400 degrees";
+//        int step6StepNum = 3;
+//
+//        RecipeStepObj step6Rep2 = new RecipeStepObj(step6RecipeId, step6Desc, step6Minutes, step6Heat, step6StepNum);
+//        stepDB.addStep(step6Rep2);
 
 
     }

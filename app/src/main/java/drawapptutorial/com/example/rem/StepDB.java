@@ -40,7 +40,6 @@ public class StepDB extends SQLiteOpenHelper {
                 + KEY_TIMER_TIME + " NUMBER,"
                 + KEY_HEAT + " TEXT" + ")";
         db.execSQL(CREATE_TASK_TABLE);
-        onCreate(db);
     }
 
     @Override
