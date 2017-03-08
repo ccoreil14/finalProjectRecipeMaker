@@ -124,6 +124,7 @@ public class MainDB extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(selectQuery, null);
         cursor.moveToFirst();
         recipe_id = Integer.parseInt(cursor.getString(0));
+        recipe_id = Integer.parseInt(cursor.getString(0));
         return recipe_id;
     }
 

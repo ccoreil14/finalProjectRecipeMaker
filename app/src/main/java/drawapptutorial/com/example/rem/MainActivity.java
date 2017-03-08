@@ -14,13 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    Button addRecipe;
     public static MainDB mainDB;
     public static StepDB stepDB;
     private List<RecipeObj> recipes;
     private ListView recipeList;
     private ArrayAdapter<RecipeObj> adapter;
     private RecipeObj chosenRecipe;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,5 +163,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 
 }
