@@ -75,23 +75,29 @@
         android:layout_weight="0.33">
 
         <LinearLayout
-            android:orientation="vertical"
+            android:layout_width="190px"
             android:layout_height="match_parent"
-            android:layout_width="190px">
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/tagEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter New Tag"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/addTagBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add New Tag" />
 
             <ListView
                 android:id="@+id/tagListView"
                 android:layout_width="match_parent"
-                android:layout_height="450dp" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/tagEditText"
-                android:textAlignment="center"
-                android:hint="Enter New Tag" />
+                android:layout_height="406dp" />
 
         </LinearLayout>
 
@@ -109,10 +115,16 @@
                 android:textAlignment="center"
                 android:hint="Enter New Ingredient" />
 
+            <Button
+                android:id="@+id/addIngredientBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add New Ingredient" />
+
             <ListView
                 android:id="@+id/ingredientsListView"
                 android:layout_width="match_parent"
-                android:layout_height="451dp" />
+                android:layout_height="405dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -128,7 +140,7 @@
 
             <ListView
                 android:layout_width="match_parent"
-                android:layout_height="448dp"
+                android:layout_height="449dp"
                 android:id="@+id/stepListView" />
         </LinearLayout>
 
