@@ -79,6 +79,11 @@
             android:layout_height="match_parent"
             android:layout_width="190px">
 
+            <ListView
+                android:id="@+id/tagListView"
+                android:layout_width="match_parent"
+                android:layout_height="450dp" />
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,10 +93,6 @@
                 android:textAlignment="center"
                 android:hint="Enter New Tag" />
 
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="450dp"
-                android:id="@+id/tagListView" />
         </LinearLayout>
 
         <LinearLayout
@@ -109,9 +110,9 @@
                 android:hint="Enter New Ingredient" />
 
             <ListView
+                android:id="@+id/ingredientsListView"
                 android:layout_width="match_parent"
-                android:layout_height="451dp"
-                android:id="@+id/ingredientsListView" />
+                android:layout_height="451dp" />
         </LinearLayout>
 
         <LinearLayout

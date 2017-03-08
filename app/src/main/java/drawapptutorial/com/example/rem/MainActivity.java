@@ -10,9 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    Button addRecipe;
-    private MainDB mainDB;
-    private StepDB stepDB;
+    public static MainDB mainDB;
+    public static StepDB stepDB;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,5 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 
 }
