@@ -3,6 +3,7 @@ package drawapptutorial.com.example.rem;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private List<RecipeObj> recipes;
     private ListView recipeList;
     private ArrayAdapter<RecipeObj> adapter;
+    private RecipeObj chosenRecipe;
 
 
 
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mainDB = new MainDB(this);
         stepDB = new StepDB(this);
-//        addHardCodedItemsToDatabase();
+        //addHardCodedItemsToDatabase();
 //        addRecipe = (Button) findViewById(R.id.addRecipe);
 
         recipes = mainDB.getAllRecipies();
@@ -35,6 +37,16 @@ public class MainActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<RecipeObj>(this,R.layout.activity_listview,recipes);
         recipeList.setAdapter(adapter);
 
+        recipeList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                chosenRecipe = recipes.get(position);
+                Intent i = new Intent(MainActivity.this, traditionalRecipe.class);
+                i.putExtra("recipeID","" + chosenRecipe.getId());
+                startActivity(i);
+            }
+        });
 
     }
 
@@ -50,10 +62,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void viewRecipeTraditional(View v){
-        Intent i = new Intent(this,traditionalRecipe.class);
-        startActivity(i);
-    }
+//    public void viewRecipeTraditional(View v){
+//        Intent i = new Intent(MainActivity.this,traditionalRecipe.class);
+//        startActivity(i);
+//    }
 
     public void addHardCodedItemsToDatabase(){
 // String name, String description, int totalTime, List<String> tags, List<String> ingredients

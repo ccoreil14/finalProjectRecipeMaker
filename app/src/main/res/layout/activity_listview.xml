@@ -5,6 +5,5 @@
     android:layout_height="fill_parent"
     android:padding="10dip"
     android:textStyle="bold"
-    android:textColor="#000"
-    android:onClick="viewRecipeTraditional">
+    android:textColor="#000">
 </TextView>
