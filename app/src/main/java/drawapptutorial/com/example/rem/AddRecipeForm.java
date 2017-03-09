@@ -116,49 +116,81 @@ public class AddRecipeForm extends AppCompatActivity implements View.OnClickList
         MainActivity.mainDB.addRecipe(newRecipe);
     }
 
-    public void addStep(int stepOrderNum){
-        String attTyp = attributeType.getSelectedItem().toString();
+    public void addStep(final int stepOrderNum){
+        final String attTyp = attributeType.getSelectedItem().toString();
 
-        String stepDesc = "";
-        int timerNum = 0;
-        String heat = "";
         switch (attTyp) {
             case "Details":
                 stepDescription.show();
+                addStepBtnDialog= (Button) stepDescription.findViewById(R.id.addStepBtn);
                 addStepDescDialog = (EditText) stepDescription.findViewById(R.id.addStepDesc);
-
-                stepDesc = addStepDescDialog.getText().toString();
                 break;
 
             case "Timer":
                 stepTimer.show();
+                addStepBtnDialog= (Button) stepTimer.findViewById(R.id.addStepBtn);
                 addStepDescDialog = (EditText) stepTimer.findViewById(R.id.addStepDesc);
                 addStepTimerDialog = (EditText) stepTimer.findViewById(R.id.addTimerNum);
-
-                stepDesc = addStepDescDialog.getText().toString();
-                timerNum = Integer.parseInt(addStepDescDialog.getText().toString());
                 break;
 
             case "Oven":
                 stepOven.show();
+                addStepBtnDialog= (Button) stepOven.findViewById(R.id.addStepBtn);
                 addStepDescDialog= (EditText) stepOven.findViewById(R.id.addStepDesc);
                 addStepTimerDialog = (EditText) stepOven.findViewById(R.id.addTimerNum);
                 addStepHeatOvenDialog = (EditText) stepOven.findViewById(R.id.ovenHeat);
-
-                stepDesc = addStepDescDialog.getText().toString();
-                timerNum = Integer.parseInt(addStepDescDialog.getText().toString());
-                heat = addStepHeatOvenDialog.getText().toString();
                 break;
 
             case "Microwave":
                 stepMicrowave.show();
+                addStepBtnDialog= (Button) stepMicrowave.findViewById(R.id.addStepBtn);
                 addStepDescDialog = (EditText) stepMicrowave.findViewById(R.id.addStepDesc);
                 addStepTimerDialog = (EditText) stepMicrowave.findViewById(R.id.addTimerNum);
                 addStepHeatMicrowaveDialog = (Spinner) stepMicrowave.findViewById(R.id.heatSpinner);
+                break;
 
+            default:
+                Log.d("Error", "WHAT?!");
+                break;
+        }
+
+        addStepBtnDialog.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                addStepToDB(attTyp,stepOrderNum);
+            }
+        });
+
+    }
+
+    public void addStepToDB(String attType, int stepOrderNum){
+        String stepDesc = "";
+        int timerNum = 0;
+        String heat = "";
+
+        switch (attType) {
+            case "Details":
+                stepDesc = addStepDescDialog.getText().toString();
+                stepDescription.cancel();
+                break;
+
+            case "Timer":
+                stepDesc = addStepDescDialog.getText().toString();
+                timerNum = Integer.parseInt(addStepDescDialog.getText().toString());
+                stepTimer.cancel();
+                break;
+
+            case "Oven":
+                stepDesc = addStepDescDialog.getText().toString();
+                timerNum = Integer.parseInt(addStepDescDialog.getText().toString());
+                heat = addStepHeatOvenDialog.getText().toString();
+                stepOven.cancel();
+                break;
+
+            case "Microwave":
                 stepDesc = addStepDescDialog.getText().toString();
                 timerNum = Integer.parseInt(addStepDescDialog.getText().toString());
                 heat = addStepHeatMicrowaveDialog.getSelectedItem().toString();
+                stepMicrowave.cancel();
                 break;
 
             default:
@@ -168,12 +200,6 @@ public class AddRecipeForm extends AppCompatActivity implements View.OnClickList
 
         RecipeStepObj step = new RecipeStepObj( MainActivity.mainDB.getRecipeCount()+1, stepDesc, timerNum, heat, stepOrderNum);
         MainActivity.stepDB.addStep(step);
-
-        stepDescription.cancel();
-        stepTimer.cancel();
-        stepOven.cancel();
-        stepMicrowave.cancel();
-
     }
 
     public void addTag(){
