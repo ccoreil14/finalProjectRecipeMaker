@@ -107,13 +107,13 @@
             android:layout_width="190px">
 
             <EditText
+                android:id="@+id/ingredientEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/ingredientEditText"
-                android:textAlignment="center"
-                android:hint="Enter New Ingredient" />
+                android:hint="Enter New Ingredient"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
 
             <Button
                 android:id="@+id/addIngredientBtn"
@@ -130,7 +130,15 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_height="match_parent"
-            android:layout_width="190px">
+            android:layout_width="190px"
+            android:weightSum="1">
+
+            <Spinner
+                android:id="@+id/attributeType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.51"
+                android:entries="@array/step_item_types" />
 
             <Button
                 android:text="Add New Step"
@@ -139,9 +147,9 @@
                 android:id="@+id/addStepBtn" />
 
             <ListView
+                android:id="@+id/stepListView"
                 android:layout_width="match_parent"
-                android:layout_height="449dp"
-                android:id="@+id/stepListView" />
+                android:layout_height="407dp" />
         </LinearLayout>
 
     </LinearLayout>
