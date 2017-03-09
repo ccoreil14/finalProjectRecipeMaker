@@ -1,5 +1,6 @@
 package drawapptutorial.com.example.rem;
 
+import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,28 +9,35 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AddRecipeForm extends AppCompatActivity implements View.OnClickListener {
 
-    Button addRecipeBtn;
-    Button addStepBtn;
-    Button addTagBtn;
-    Button addIngredientBtn;
-    EditText addRecipeName;
-    EditText addRecipeDescription;
-    EditText addRecipeTotalTime;
-    EditText tagEditText;
-    EditText ingredientEditText;
-    ListView tagListView;
-    List<String> tags;
-    ListView ingredientsListView;
-    List<String> ingredients;
-    ListView stepListView;
+    private Button addRecipeBtn;
+    private Button addStepBtn;
+    private Button addTagBtn;
+    private Button addIngredientBtn;
+    private EditText addRecipeName;
+    private EditText addRecipeDescription;
+    private EditText addRecipeTotalTime;
+    private EditText tagEditText;
+    private EditText ingredientEditText;
+    private ListView tagListView;
+    private List<String> tags;
+    private ListView ingredientsListView;
+    private List<String> ingredients;
+    private ListView stepListView;
+    private Spinner attributeType = (Spinner) findViewById(R.id.attributeType);
     private ArrayAdapter<String> tagAdapter;
     private ArrayAdapter<String> ingredientAdapter;
+    private Dialog stepDescription;
+    private Dialog stepTimer;
+    private Dialog stepOven;
+    private Dialog stepMicrowave;
+
 
 
 
@@ -63,6 +71,12 @@ public class AddRecipeForm extends AppCompatActivity implements View.OnClickList
         tags = new ArrayList<String>();
         ingredients = new ArrayList<String>();
 
+        stepDescription = new Dialog(this);
+        stepDescription.setContentView(R.layout.add_desc_layout);
+        stepTimer = new Dialog(this);
+        stepOven = new Dialog(this);
+        stepMicrowave = new Dialog(this);
+
     }
 
     @Override
@@ -74,6 +88,8 @@ public class AddRecipeForm extends AppCompatActivity implements View.OnClickList
             addTag();
         }else if(v.getId() == R.id.addIngredientBtn){
             addIngredient();
+        }else if(v.getId() == R.id.addStepBtn){
+
         }
     }
 
@@ -89,7 +105,23 @@ public class AddRecipeForm extends AppCompatActivity implements View.OnClickList
     }
 
     public void addStep(){
+        String attTyp = attributeType.getSelectedItem().toString();
+        switch (attTyp) {
+            case "Details":
 
+                break;
+            case "Timer":
+
+                break;
+            case "Oven":
+
+                break;
+            case "Microwave":
+
+                break;
+            default: Log.d("Error", "WHAT?!");
+                break;
+        }
     }
 
     public void addTag(){
