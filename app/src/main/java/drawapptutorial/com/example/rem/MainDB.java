@@ -46,6 +46,11 @@ public class MainDB extends SQLiteOpenHelper {
 
     }
 
+    public void deleteAll() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_RECIPES, null, null);
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RECIPES);
@@ -53,7 +58,7 @@ public class MainDB extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addRecipe(RecipeObj recipe) {
+    public long addRecipe(RecipeObj recipe) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -64,8 +69,9 @@ public class MainDB extends SQLiteOpenHelper {
         values.put(KEY_INGREDIENTS, recipe.getListAsString(recipe.getIngredients()));
 
 // Inserting Row
-        db.insert(TABLE_RECIPES, null, values);
+        long result = db.insert(TABLE_RECIPES, null, values);
         db.close(); // Closing database connection
+        return result;
     }
 
     public RecipeObj getRecipe(int id) {
