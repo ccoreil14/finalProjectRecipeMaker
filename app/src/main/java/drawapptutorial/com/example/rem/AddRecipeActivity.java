@@ -14,7 +14,7 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddRecipeForm extends AppCompatActivity implements View.OnClickListener {
+public class AddRecipeActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button addRecipeBtn;
     private Button addStepBtn;
@@ -48,6 +48,7 @@ public class AddRecipeForm extends AppCompatActivity implements View.OnClickList
     private EditText addStepHeatOvenDialog;
     private Spinner addStepHeatMicrowaveDialog;
 //  for Dialog Related Stuff
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addNew(View v){
-        Intent i = new Intent(this,AddRecipeForm.class);
+        Intent i = new Intent(this,AddRecipeActivity.class);
         startActivity(i);
         //comment for christian
     }
