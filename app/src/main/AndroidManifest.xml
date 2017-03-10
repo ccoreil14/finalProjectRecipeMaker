@@ -17,7 +17,7 @@
         </activity>
         <activity android:name=".traditionalRecipe"></activity>
         <activity android:name=".ConverterActivity"></activity>
-        <activity android:name=".AddRecipeForm"></activity>
+        <activity android:name=".AddRecipeActivity"></activity>
     </application>
 
 </manifest>

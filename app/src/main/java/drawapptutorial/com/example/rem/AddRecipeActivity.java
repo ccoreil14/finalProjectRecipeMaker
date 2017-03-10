@@ -14,7 +14,7 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddRecipeForm extends AppCompatActivity implements View.OnClickListener {
+public class AddRecipeActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button addRecipeBtn;
     private Button addStepBtn;
@@ -30,7 +30,7 @@ public class AddRecipeForm extends AppCompatActivity implements View.OnClickList
     private ListView ingredientsListView;
     private List<String> ingredients;
     private ListView stepListView;
-    private Spinner attributeType = (Spinner) findViewById(R.id.attributeType);
+    private Spinner attributeType;
     private ArrayAdapter<String> tagAdapter;
     private ArrayAdapter<String> ingredientAdapter;
 
@@ -47,7 +47,7 @@ public class AddRecipeForm extends AppCompatActivity implements View.OnClickList
     private EditText addStepTimerDialog;
     private EditText addStepHeatOvenDialog;
     private Spinner addStepHeatMicrowaveDialog;
-//  for Dialog Related Stuff
+    //  for Dialog Related Stuff
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +74,8 @@ public class AddRecipeForm extends AppCompatActivity implements View.OnClickList
         tagListView = (ListView) findViewById(R.id.tagListView);
         ingredientsListView = (ListView) findViewById(R.id.ingredientsListView);
         stepListView = (ListView) findViewById(R.id.stepListView);
+
+        attributeType = (Spinner) findViewById(R.id.attributeType);
 
         tags = new ArrayList<String>();
         ingredients = new ArrayList<String>();
