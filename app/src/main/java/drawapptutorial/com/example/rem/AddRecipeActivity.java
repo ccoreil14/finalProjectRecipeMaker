@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +34,7 @@ public class AddRecipeActivity extends AppCompatActivity implements View.OnClick
     private Spinner attributeType;
     private ArrayAdapter<String> tagAdapter;
     private ArrayAdapter<String> ingredientAdapter;
+    private ArrayAdapter<RecipeStepObj> stepAdapter;
 
 
 //  for Dialog Related Stuff
@@ -90,7 +92,7 @@ public class AddRecipeActivity extends AppCompatActivity implements View.OnClick
         stepMicrowave = new Dialog(this);
         stepMicrowave.setContentView(R.layout.add_microwave_layout);
 
-        addStepBtnDialog= (Button) stepDescription.findViewById(R.id.addStepBtn);
+        addStepBtnDialog = (Button) stepDescription.findViewById(R.id.addStepBtn);
 
 
 
@@ -205,8 +207,17 @@ public class AddRecipeActivity extends AppCompatActivity implements View.OnClick
                 break;
         }
 
-        RecipeStepObj step = new RecipeStepObj( MainActivity.mainDB.getRecipeCount()+1, stepDesc, timerNum, heat, stepOrderNum);
+        int recipeId = MainActivity.mainDB.getRecipeCount() + 1;
+        RecipeStepObj step = new RecipeStepObj( recipeId , stepDesc, timerNum, heat, stepOrderNum);
         MainActivity.stepDB.addStep(step);
+
+//        List<RecipeStepObj> steps = new ArrayList<RecipeStepObj>();
+//        stepAdapter = new Adapter<RecipeStepObj>(this,R.layout.activity_listview,steps);
+//        stepsToListView();
+    }
+
+    public void stepsToListView(){
+
     }
 
     public void addTag(){
