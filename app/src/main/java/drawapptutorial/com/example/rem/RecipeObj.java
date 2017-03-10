@@ -87,6 +87,16 @@ public class RecipeObj {
         return this.ingredients;
     }
 
+    public String toString(){
+        String result = "";
+        List<String> tagToAdd = this.getTags();
+        result += this.name + "\t\t"  +  "Prep Time: " + this.getTotalTime() + " mins\n\nTags: ";
+        for(String t: tagToAdd){
+            result += t + " ";
+        }
+        return result;
+    }
+
 
 
 }
