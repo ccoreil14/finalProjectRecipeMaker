@@ -31,4 +31,11 @@
         android:hint="0 minutes"
         android:inputType="number" />
 
+    <Button
+        android:id="@+id/addStepBtnYo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.00"
+        android:text="Add Step Button" />
+
 </LinearLayout>

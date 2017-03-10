@@ -13,4 +13,10 @@
         android:gravity="top|left"
         android:hint="Step Description"
         android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/addStepBtnYo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Step Button" />
 </LinearLayout>
