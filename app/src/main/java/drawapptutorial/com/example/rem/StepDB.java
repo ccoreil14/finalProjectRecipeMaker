@@ -49,6 +49,10 @@ public class StepDB extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public void deleteAll() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_STEPS, null, null);
+    }
 
     public void addStep(RecipeStepObj step) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -83,7 +87,7 @@ public class StepDB extends SQLiteOpenHelper {
         return recipeStepList;
     }
 
-    public List<RecipeStepObj> getAllRecpies() {
+    public List<RecipeStepObj> getAllRecipes() {
 
         String selectQuery = "SELECT * FROM " + TABLE_STEPS;
 
@@ -93,12 +97,12 @@ public class StepDB extends SQLiteOpenHelper {
         return getStepList(cursor);
     }
 
-    public List<RecipeStepObj> getRecipesBasedOnRecipeId(int recipe_id){
+    public List<RecipeStepObj> getRecipeStepsFromRecipeId(int recipe_id){
         List<RecipeStepObj> taskList = new ArrayList<RecipeStepObj>();
-        String selectQuery = "SELECT * FROM " + TABLE_STEPS + "WHERE "+KEY_RECIPE_ID+ " = "+ recipe_id;
+        String selectQuery = "SELECT * FROM " + TABLE_STEPS + "WHERE "+ KEY_RECIPE_ID + " = "+ recipe_id;
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.query(TABLE_STEPS, null, null, null, null, null, "recipe_id");
+        Cursor cursor = db.query(TABLE_STEPS, null, null, null, null, null, "recipe_step_number");
 
         return getStepList(cursor);
     }
