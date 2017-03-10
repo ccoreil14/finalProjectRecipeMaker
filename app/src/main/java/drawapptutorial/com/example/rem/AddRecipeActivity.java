@@ -48,6 +48,7 @@ public class AddRecipeActivity extends AppCompatActivity implements View.OnClick
     private EditText addStepHeatOvenDialog;
     private Spinner addStepHeatMicrowaveDialog;
     //  for Dialog Related Stuff
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
