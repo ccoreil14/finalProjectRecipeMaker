@@ -3,6 +3,8 @@ package drawapptutorial.com.example.rem;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -12,6 +14,9 @@ public class traditionalRecipe extends AppCompatActivity {
     TextView tagsText;
     TextView prepTimeText;
     TextView ingredientsText;
+    ListView stepListView;
+    List<RecipeStepObj> stepsToShow;
+    ArrayAdapter<RecipeStepObj> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,7 @@ public class traditionalRecipe extends AppCompatActivity {
         recipeNameText.setText(recipeToShow.getName());
         prepTimeText = (TextView) findViewById(R.id.prepTimeText);
         prepTimeText.setText("Total Prep Time: " + recipeToShow.getTotalTime());
+        stepListView = (ListView) findViewById(R.id.stepListView);
 
         ingredientsText = (TextView) findViewById(R.id.ingredientsText);
         List<String> ingredientsToShow = recipeToShow.getIngredients();
@@ -41,5 +47,10 @@ public class traditionalRecipe extends AppCompatActivity {
             tagsFormat += tagsToShow.get(i) + " ";
         }
         tagsText.setText("Tags: " + tagsFormat);
+
+
+        stepsToShow = MainActivity.stepDB.getRecipeStepsFromRecipeId(Integer.parseInt(chosenRecipeID));
+        adapter = new ArrayAdapter<RecipeStepObj>(this,R.layout.activity_listview,stepsToShow);
+        stepListView.setAdapter(adapter);
         }
 }
