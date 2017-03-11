@@ -1,5 +1,7 @@
 package drawapptutorial.com.example.rem;
 
+import java.util.List;
+
 /**
  * Created by Christian Coreil on 3/1/2017.
  */
@@ -64,5 +66,11 @@ public class RecipeStepObj {
 
     public int getStepOrderNumber(){
         return this.stepOrderNumber;
+    }
+
+    public String toString(){
+        String result = "";
+        result += "Step "+this.stepOrderNumber;
+        return result;
     }
 }

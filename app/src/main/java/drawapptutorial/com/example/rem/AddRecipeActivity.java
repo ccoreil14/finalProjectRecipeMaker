@@ -34,6 +34,7 @@ public class AddRecipeActivity extends AppCompatActivity implements View.OnClick
     private Spinner attributeType;
     private ArrayAdapter<String> tagAdapter;
     private ArrayAdapter<String> ingredientAdapter;
+    List<RecipeStepObj> steps;
     private ArrayAdapter<RecipeStepObj> stepAdapter;
 
 
@@ -205,14 +206,11 @@ public class AddRecipeActivity extends AppCompatActivity implements View.OnClick
         RecipeStepObj step = new RecipeStepObj( recipeId , stepDesc, timerNum, heat, stepOrderNum);
         MainActivity.stepDB.addStep(step);
 
-//        List<RecipeStepObj> steps = new ArrayList<RecipeStepObj>();
-//        stepAdapter = new Adapter<RecipeStepObj>(this,R.layout.activity_listview,steps);
-//        stepsToListView();
-    }
-
-    public void stepsToListView(){
+        steps = new ArrayList<RecipeStepObj>();
+        stepAdapter = new ArrayAdapter<RecipeStepObj>(this,R.layout.activity_listview,steps);
 
     }
+
 
     public void addTag(){
         String yo = tagEditText.getText().toString();
