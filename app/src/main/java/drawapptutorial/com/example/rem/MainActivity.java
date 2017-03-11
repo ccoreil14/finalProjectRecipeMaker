@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     private ArrayAdapter<RecipeObj> adapter;
     private RecipeObj chosenRecipe;
     private EditText searchBar;
+    private RadioGroup searchBtnGroup;
+//    private RadioButton searchNameBtn;
+//    private RadioButton searchTagsBtn;
+    private boolean isSearchByName = true;
 
 
 
@@ -71,28 +77,53 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                recipes = mainDB.getRecipesByName(searchBar.getText().toString());
-                recipeList = (ListView) findViewById(R.id.recipeList);
-                adapter = new ArrayAdapter<RecipeObj>( MainActivity.this ,R.layout.activity_listview,recipes);
-                recipeList.setAdapter(adapter);
+                if (isSearchByName) {
+                    recipes = mainDB.getRecipesByName(searchBar.getText().toString());
+                } else {
+                    recipes = mainDB.getRecipesByTags(searchBar.getText().toString());
+                }
+                    recipeList = (ListView) findViewById(R.id.recipeList);
+                    adapter = new ArrayAdapter<RecipeObj>(MainActivity.this, R.layout.activity_listview, recipes);
+                    recipeList.setAdapter(adapter);
 
-                recipeList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                    recipeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        chosenRecipe = recipes.get(position);
-                        Intent i = new Intent(MainActivity.this, traditionalRecipe.class);
-                        i.putExtra("recipeID","" + chosenRecipe.getId());
-                        startActivity(i);
-                    }
-                });
-            }
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            chosenRecipe = recipes.get(position);
+                            Intent i = new Intent(MainActivity.this, traditionalRecipe.class);
+                            i.putExtra("recipeID", "" + chosenRecipe.getId());
+                            startActivity(i);
+                        }
+                    });
+                }
+
+
+
 
 
             @Override
             public void afterTextChanged(Editable s) {
 
 
+            }
+        });
+
+        searchBtnGroup = (RadioGroup) this.findViewById(R.id.searchRadioGroup);
+        searchBtnGroup.check(R.id.searchNameBtn);
+
+//        searchNameBtn = (RadioButton) this.findViewById(R.id.searchNameBtn);
+//        searchTagsBtn = (RadioButton) this.findViewById(R.id.searchTagsBtn);
+
+        searchBtnGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == R.id.searchNameBtn){
+                    isSearchByName = true;
+                }else if(checkedId == R.id.searchTagsBtn){
+                    isSearchByName = false;
+                }
             }
         });
     }

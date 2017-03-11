@@ -37,17 +37,20 @@
         android:layout_toRightOf="@+id/button2"
         android:orientation="horizontal"
         android:paddingLeft="20px"
-        android:id="@+id/radioGroup">
+        android:id="@+id/searchRadioGroup">
+
         <RadioButton
+            android:id="@+id/searchNameBtn"
             android:layout_width="109dp"
             android:layout_height="wrap_content"
             android:text="Search By Name" />
 
         <RadioButton
+            android:id="@+id/searchTagsBtn"
             android:layout_width="93dp"
             android:layout_height="wrap_content"
-            android:text="SearchBy Tag"
-            android:layout_marginLeft="10px" />
+            android:layout_marginLeft="10px"
+            android:text="SearchBy Tag" />
     </RadioGroup>
     <Button
         android:layout_width="wrap_content"
@@ -64,7 +67,7 @@
         android:id="@+id/searchBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/radioGroup"
+        android:layout_above="@+id/searchRadioGroup"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"

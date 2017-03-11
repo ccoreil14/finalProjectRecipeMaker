@@ -155,7 +155,7 @@ public class MainDB extends SQLiteOpenHelper {
     }
 
     public List<RecipeObj> getRecipesByTags(String searchString){
-        String selectQuery = "SELECT * FROM " + TABLE_RECIPES +" WHERE " + KEY_TAGS + " LIKE '%"+ searchString +"%";
+        String selectQuery = "SELECT * FROM " + TABLE_RECIPES +" WHERE " + KEY_TAGS + " LIKE '%"+ searchString +"%'";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
