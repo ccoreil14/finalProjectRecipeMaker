@@ -144,6 +144,25 @@ public class MainDB extends SQLiteOpenHelper {
         return getRecipeList(cursor);
     }
 
+
+    public List<RecipeObj> getRecipesByName(String searchString){
+        String selectQuery = "SELECT * FROM " + TABLE_RECIPES +" WHERE " + KEY_NAME + " LIKE '%"+ searchString +"%'";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        return getRecipeList(cursor);
+    }
+
+    public List<RecipeObj> getRecipesByTags(String searchString){
+        String selectQuery = "SELECT * FROM " + TABLE_RECIPES +" WHERE " + KEY_TAGS + " LIKE '%"+ searchString +"%";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        return getRecipeList(cursor);
+    }
+
     public int getRecipeCount() {
         String countQuery = "SELECT * FROM " + TABLE_RECIPES;
         SQLiteDatabase db = this.getReadableDatabase();

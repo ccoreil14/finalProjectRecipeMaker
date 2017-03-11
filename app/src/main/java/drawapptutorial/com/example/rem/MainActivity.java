@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView recipeList;
     private ArrayAdapter<RecipeObj> adapter;
     private RecipeObj chosenRecipe;
+    private EditText searchBar;
 
 
 
@@ -38,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mainDB = new MainDB(this);
         stepDB = new StepDB(this);
+
 //        addRecipe = (Button) findViewById(R.id.addRecipe);
+
 
         recipes = mainDB.getAllRecipies();
         recipeList = (ListView) findViewById(R.id.recipeList);
@@ -56,6 +62,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        searchBar = (EditText) findViewById(R.id.searchBar);
+        searchBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                recipes = mainDB.getRecipesByName(searchBar.getText().toString());
+                recipeList = (ListView) findViewById(R.id.recipeList);
+                adapter = new ArrayAdapter<RecipeObj>( MainActivity.this ,R.layout.activity_listview,recipes);
+                recipeList.setAdapter(adapter);
+
+                recipeList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        chosenRecipe = recipes.get(position);
+                        Intent i = new Intent(MainActivity.this, traditionalRecipe.class);
+                        i.putExtra("recipeID","" + chosenRecipe.getId());
+                        startActivity(i);
+                    }
+                });
+            }
+
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+            }
+        });
     }
 
     @Override
