@@ -70,7 +70,7 @@ public class RecipeStepObj {
 
     public String toString(){
         String result = "";
-        result += "Step "+this.stepOrderNumber;
+        result += "Step " + getStepOrderNumber() + ":\n\t" + getStepDesc();
         return result;
     }
 }
