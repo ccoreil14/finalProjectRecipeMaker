@@ -97,8 +97,9 @@ public class AddRecipeActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.addRecipeBtn){
-            addRecipe();
-            finish();
+            if(addRecipe()){
+                finish();
+            }
         }else if(v.getId() == R.id.addTagBtn){
             addTag();
         }else if(v.getId() == R.id.addIngredientBtn){
@@ -109,15 +110,50 @@ public class AddRecipeActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    public void addRecipe(){
-        String name = addRecipeName.getText().toString();
-        String desc = addRecipeDescription.getText().toString();
-        int totalTime = Integer.parseInt(addRecipeTotalTime.getText().toString());
-        List<String> tagList = getListFromListview(tagListView);
-        List<String> ingredientList = getListFromListview(ingredientsListView);
+    public boolean addRecipe(){
+        String name = "";
+        String desc = "";
+        int totalTime = 0;
+        List<String> tagList;
+        List<String> ingredientList;
+        if(addRecipeName.getText().toString().equals("")){
+            addRecipeName.setError("Empty Input");
+            return false;
+        }else{
+            name = addRecipeName.getText().toString();
+        }
+        if(addRecipeDescription.getText().toString().equals("")){
+            addRecipeDescription.setError("Empty Input");
+            return false;
+        }
+        else{
+            desc = addRecipeDescription.getText().toString();
+        }
+        if(addRecipeTotalTime.getText().toString().equals("")){
+            addRecipeTotalTime.setError("Empty Input");
+            return false;
+        }else{
+            totalTime = Integer.parseInt(addRecipeTotalTime.getText().toString());
+        }
+        if(tagListView.getChildCount() == 0){
+            tagEditText.setError("Need at least one tag");
+            return false;
+        }else{
+            tagList = getListFromListview(tagListView);
+        }
+        if(ingredientsListView.getChildCount() == 0){
+            ingredientEditText.setError("Need at least one ingredient");
+            return false;
+        }else{
+            ingredientList = getListFromListview(ingredientsListView);
+        }
 
+//        List<String> tagList = getListFromListview(tagListView);
+//        List<String> ingredientList = getListFromListview(ingredientsListView);
+//
         RecipeObj newRecipe = new RecipeObj(name, desc, totalTime, tagList, ingredientList);
         MainActivity.mainDB.addRecipe(newRecipe);
+        return true;
     }
 
     public void addStep(final int stepOrderNum){
