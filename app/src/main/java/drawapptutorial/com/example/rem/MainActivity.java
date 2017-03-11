@@ -58,6 +58,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onResume(){
+        recipes = mainDB.getAllRecipies();
+        adapter = new ArrayAdapter<RecipeObj>(this,R.layout.activity_listview,recipes);
+        recipeList.setAdapter(adapter);
+        super.onResume();
+    }
+
     public void addNew(View v){
         Intent i = new Intent(this,AddRecipeActivity.class);
         startActivity(i);
@@ -70,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-//    public void viewRecipeTraditional(View v){
-//        Intent i = new Intent(MainActivity.this,traditionalRecipe.class);
-//        startActivity(i);
-//    }
+    public void viewRecipeTraditional(View v){
+        Intent i = new Intent(MainActivity.this,traditionalRecipe.class);
+        startActivity(i);
+    }
 
     public JSONObject recipeToJson(RecipeObj obj) {
         JSONObject result = new JSONObject();

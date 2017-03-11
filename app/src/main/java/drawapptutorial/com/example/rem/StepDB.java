@@ -99,10 +99,10 @@ public class StepDB extends SQLiteOpenHelper {
 
     public List<RecipeStepObj> getRecipeStepsFromRecipeId(int recipe_id){
         List<RecipeStepObj> taskList = new ArrayList<RecipeStepObj>();
-        String selectQuery = "SELECT * FROM " + TABLE_STEPS + "WHERE "+ KEY_RECIPE_ID + " = "+ recipe_id;
+        String selectQuery = "SELECT * FROM " + TABLE_STEPS + " WHERE "+ KEY_RECIPE_ID + " LIKE '%"+ recipe_id+"%'";
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.query(TABLE_STEPS, null, null, null, null, null, "recipe_step_number");
+        Cursor cursor = db.rawQuery(selectQuery,null);
 
         return getStepList(cursor);
     }

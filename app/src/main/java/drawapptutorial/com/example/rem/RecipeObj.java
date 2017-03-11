@@ -96,7 +96,7 @@ public class RecipeObj {
         List<String> tagToAdd = this.getTags();
         result += this.name + "\n\n"  +  "Prep Time: " + this.getTotalTime() + " mins\n\nTags: ";
         for(String t: tagToAdd){
-            result += t + " ";
+            result += t + "     ";
         }
         return result;
     }
