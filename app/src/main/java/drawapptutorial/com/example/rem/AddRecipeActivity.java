@@ -174,26 +174,40 @@ public class AddRecipeActivity extends AppCompatActivity implements View.OnClick
         switch (attType) {
             case "Details":
                 stepDesc = addStepDescDialog.getText().toString();
+                addStepDescDialog.setText("");
                 stepDescription.cancel();
                 break;
 
             case "Timer":
-                stepDesc = addStepDescDialog.getText().toString();
-                timerNum = Integer.parseInt(addStepDescDialog.getText().toString());
+                stepDesc = addStepTimerDialog.getText().toString();
+                timerNum = Integer.parseInt(addStepTimerDialog.getText().toString());
+                addStepDescDialog.setText("");
+                addStepTimerDialog.setText("");
+
                 stepTimer.cancel();
                 break;
 
             case "Oven":
                 stepDesc = addStepDescDialog.getText().toString();
-                timerNum = Integer.parseInt(addStepDescDialog.getText().toString());
+                timerNum = Integer.parseInt(addStepTimerDialog.getText().toString());
                 heat = addStepHeatOvenDialog.getText().toString();
+
+
+                addStepDescDialog.setText("");
+                addStepTimerDialog.setText("");
+                addStepHeatOvenDialog.setText("");
+
                 stepOven.cancel();
                 break;
 
             case "Microwave":
                 stepDesc = addStepDescDialog.getText().toString();
-                timerNum = Integer.parseInt(addStepDescDialog.getText().toString());
+                timerNum = Integer.parseInt(addStepTimerDialog.getText().toString());
                 heat = addStepHeatMicrowaveDialog.getSelectedItem().toString();
+
+                addStepDescDialog.setText("");
+                addStepTimerDialog.setText("");
+
                 stepMicrowave.cancel();
                 break;
 
@@ -206,8 +220,10 @@ public class AddRecipeActivity extends AppCompatActivity implements View.OnClick
         RecipeStepObj step = new RecipeStepObj( recipeId , stepDesc, timerNum, heat, stepOrderNum);
         MainActivity.stepDB.addStep(step);
 
-        steps = new ArrayList<RecipeStepObj>();
+        steps = MainActivity.stepDB.getRecipeStepsFromRecipeId(recipeId);
+        //stepAdapter.notifyDataSetChanged();
         stepAdapter = new ArrayAdapter<RecipeStepObj>(this,R.layout.activity_listview,steps);
+        stepListView.setAdapter(stepAdapter);
 
     }
 
