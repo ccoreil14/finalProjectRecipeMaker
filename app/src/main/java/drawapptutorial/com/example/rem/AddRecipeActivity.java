@@ -253,7 +253,7 @@ public class AddRecipeActivity extends AppCompatActivity implements View.OnClick
         }
 
         int recipeId = MainActivity.mainDB.getRecipeCount() + 1;
-        RecipeStepObj step = new RecipeStepObj( recipeId , stepDesc, timerNum, heat, stepOrderNum);
+        RecipeStepObj step = new RecipeStepObj( recipeId , stepDesc, timerNum, heat, stepOrderNum, attType);
         MainActivity.stepDB.addStep(step);
 
         steps = MainActivity.stepDB.getRecipeStepsFromRecipeId(recipeId);

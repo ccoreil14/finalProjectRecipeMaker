@@ -13,26 +13,29 @@ public class RecipeStepObj {
     private int timeOfStep;
     private String heatLevel;
     private int stepOrderNumber;
+    private String attType;
 
     public RecipeStepObj(){
 
     }
 
-    public RecipeStepObj(int id, int recipeId, String stepText, int timeOfStep, String heatLevel, int stepOrderNumber){
+    public RecipeStepObj(int id, int recipeId, String stepText, int timeOfStep, String heatLevel, int stepOrderNumber, String attType){
         this.id = id;
         this.recipeId = recipeId;
         this.stepDesc = stepText;
         this.timeOfStep = timeOfStep;
         this.heatLevel = heatLevel;
         this.stepOrderNumber = stepOrderNumber;
+        this.attType = attType;
     }
 
-    public RecipeStepObj(int recipeId,String stepText, int timeOfStep, String heatLevel, int stepOrderNumber){
+    public RecipeStepObj(int recipeId,String stepText, int timeOfStep, String heatLevel, int stepOrderNumber, String attType){
         this.recipeId = recipeId;
         this.stepDesc = stepText;
         this.timeOfStep = timeOfStep;
         this.heatLevel = heatLevel;
         this.stepOrderNumber = stepOrderNumber;
+        this.attType = attType;
     }
 
     public void setId(int id) {
@@ -55,18 +58,18 @@ public class RecipeStepObj {
     }
     public String getHeatLevel() {return this.heatLevel;}
 
-   public void setTimeOfStep(int timeOfStep) {
+    public void setTimeOfStep(int timeOfStep) {
         this.timeOfStep = timeOfStep;
     }
     public int getTimeOfStep() {return this.timeOfStep;}
 
-    public void setStepOrderNumber(int stepOrderNumber){
-        this.stepOrderNumber = stepOrderNumber;
-    }
-
+    public void setStepOrderNumber(int stepOrderNumber){ this.stepOrderNumber = stepOrderNumber; }
     public int getStepOrderNumber(){
         return this.stepOrderNumber;
     }
+
+    public void setAttType(String attType){ this.attType = attType;}
+    public String getAttType() { return this.attType; }
 
     public String toString(){
         String result = "";

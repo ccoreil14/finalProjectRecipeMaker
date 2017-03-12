@@ -25,6 +25,7 @@ public class StepDB extends SQLiteOpenHelper {
     private static final String KEY_DESC = "step_description";
     private static final String KEY_TIMER_TIME = "step_timer_time";
     private static final String KEY_HEAT= "step_heat";
+    private static final String KEY_ATT_TYPE= "step_att_type";
 
 
     public StepDB(Context context) {
@@ -38,7 +39,8 @@ public class StepDB extends SQLiteOpenHelper {
                 + KEY_STEP_NUMBER + " NUMBER,"
                 + KEY_DESC + " TEXT,"
                 + KEY_TIMER_TIME + " NUMBER,"
-                + KEY_HEAT + " TEXT" + ")";
+                + KEY_HEAT + " TEXT,"
+                + KEY_ATT_TYPE + " TEXT" + ")";
         db.execSQL(CREATE_TASK_TABLE);
     }
 
@@ -63,6 +65,7 @@ public class StepDB extends SQLiteOpenHelper {
         values.put(KEY_DESC, step.getStepDesc());
         values.put(KEY_TIMER_TIME, step.getTimeOfStep());
         values.put(KEY_HEAT, step.getHeatLevel());
+        values.put(KEY_ATT_TYPE, step.getAttType());
 
 // Inserting Row
         db.insert(TABLE_STEPS, null, values);
@@ -80,6 +83,7 @@ public class StepDB extends SQLiteOpenHelper {
                 stepObj.setStepDesc(cursor.getString(3));
                 stepObj.setTimeOfStep(Integer.parseInt(cursor.getString(4)));
                 stepObj.setHeatLevel(cursor.getString(5));
+                stepObj.setAttType(cursor.getString(6));
                 recipeStepList.add(stepObj);
             } while (cursor.moveToNext());
         }
@@ -126,6 +130,8 @@ public class StepDB extends SQLiteOpenHelper {
         values.put(KEY_DESC, step.getStepDesc());
         values.put(KEY_TIMER_TIME, step.getTimeOfStep());
         values.put(KEY_HEAT, step.getHeatLevel());
+        values.put(KEY_ATT_TYPE, step.getAttType());
+
 
 // updating row
         return db.update(TABLE_STEPS, values, KEY_ID + " = ?",
