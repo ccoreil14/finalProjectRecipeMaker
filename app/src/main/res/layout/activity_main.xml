@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -8,64 +9,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="drawapptutorial.com.example.rem.MainActivity">
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_height="700px"
-        android:background="#DDD"
-        android:id="@+id/recipeList"
-        android:isScrollContainer="false" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:text="@string/ccBtnText"
-        android:onClick="convCalc"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="90px" />
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_alignBottom="@+id/button"
-        android:layout_height="40px"
-        android:layout_toRightOf="@+id/button2"
-        android:orientation="horizontal"
-        android:paddingLeft="20px"
-        android:id="@+id/searchRadioGroup">
-
-        <RadioButton
-            android:id="@+id/searchNameBtn"
-            android:layout_width="109dp"
-            android:layout_height="wrap_content"
-            android:text="Search By Name" />
-
-        <RadioButton
-            android:id="@+id/searchTagsBtn"
-            android:layout_width="93dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10px"
-            android:text="SearchBy Tag" />
-    </RadioGroup>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:text="@string/recipeBtnText"
-        android:onClick="addNew"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="90px" />
+    android:orientation="vertical"
+    tools:context="drawapptutorial.com.example.rem.MainActivity"
+    android:weightSum="1">
 
     <EditText
         android:id="@+id/searchBar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/searchRadioGroup"
         android:layout_alignParentEnd="true"
@@ -78,4 +28,69 @@
         android:inputType="textPersonName"
         android:textSize="30sp" />
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/searchRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/button"
+            android:layout_marginTop="17dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20px">
+
+            <RadioButton
+                android:id="@+id/searchNameBtn"
+                android:layout_width="109dp"
+                android:layout_height="wrap_content"
+                android:text="Search By Name"
+                app:buttonTint="@color/colorPrimaryDark" />
+
+            <RadioButton
+                android:id="@+id/searchTagsBtn"
+                android:layout_width="93dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:text="SearchBy Tag"
+                app:buttonTint="@color/colorPrimaryDark" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10px"
+        android:onClick="convCalc"
+        android:text="@string/ccBtnText" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/searchRadioGroup"
+        android:layout_marginTop="10px"
+        android:onClick="addNew"
+        android:text="@string/recipeBtnText" />
+
+    <ListView
+        android:id="@+id/recipeList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30px"
+        android:background="#DDD"
+        android:isScrollContainer="false" />
+
+</LinearLayout>
