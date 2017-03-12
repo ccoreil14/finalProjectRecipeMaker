@@ -1,5 +1,7 @@
 package drawapptutorial.com.example.rem;
 
+import android.util.Log;
+
 import java.util.List;
 
 /**
@@ -73,7 +75,28 @@ public class RecipeStepObj {
 
     public String toString(){
         String result = "";
-        result += "Step " + getStepOrderNumber() + ":\n\t" + getStepDesc();
+        switch(getAttType()){
+            case "Details":
+                result += "Step " + getStepOrderNumber() + ":\n\t" + getStepDesc();
+                break;
+
+            case "Timer":
+                result += "Step " + getStepOrderNumber() + ":\n\t" + getStepDesc() + "\n\tThis task should take " + getTimeOfStep() + " mins";
+                break;
+
+            case "Oven":
+                result += "Step " + getStepOrderNumber() + ":\n\t" + getStepDesc() + "\n\tPreheat oven to " + getHeatLevel() + "&#x2109" + " and leave in oven for " + getTimeOfStep() + " mins";
+                break;
+
+            case "Microwave":
+                result += "Step " + getStepOrderNumber() + ":\n\t" + getStepDesc() + "\n\tPut in microwave at " + getHeatLevel() + "&#x2109" + " for " + getTimeOfStep() + " mins";
+                break;
+
+            default:
+                Log.d("Error", "WHAT?!");
+                break;
+        }
+
         return result;
     }
 }
