@@ -94,11 +94,11 @@ public class RecipeStepObj {
                 break;
 
             case "Oven":
-                result += "Step " + getStepOrderNumber() + ":\n\t" + getStepDesc() + "\n\tPreheat oven to " + getHeatLevel() + "&#x2109" + " and leave in oven for " + getTimeOfStep() + " mins";
+                result += "Step " + getStepOrderNumber() + ":\n\t" + getStepDesc() + "\n\tPreheat oven to " + getHeatLevel() + "°F" + " and leave in oven for " + getTimeOfStep() + " mins";
                 break;
 
             case "Microwave":
-                result += "Step " + getStepOrderNumber() + ":\n\t" + getStepDesc() + "\n\tPut in microwave at " + getHeatLevel() + "&#x2109" + " for " + getTimeOfStep() + " mins";
+                result += "Step " + getStepOrderNumber() + ":\n\t" + getStepDesc() + "\n\tPut in microwave at " + getHeatLevel() + " for " + getTimeOfStep() + " mins";
                 break;
 
             default:
