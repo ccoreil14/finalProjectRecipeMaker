@@ -38,6 +38,15 @@ public class RecipeStepObj {
         this.attType = attType;
     }
 
+    public RecipeStepObj(int recipeId,String stepText, int timeOfStep, String heatLevel, int stepOrderNumber){
+        this.recipeId = recipeId;
+        this.stepDesc = stepText;
+        this.timeOfStep = timeOfStep;
+        this.heatLevel = heatLevel;
+        this.stepOrderNumber = stepOrderNumber;
+        this.attType = attType;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
