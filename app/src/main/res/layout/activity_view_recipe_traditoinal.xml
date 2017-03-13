@@ -2,19 +2,26 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="20px"
+    android:paddingTop="20px">
 
     <ListView
+        android:id="@+id/stepListView"
         android:layout_width="match_parent"
         android:layout_height="550px"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/stepListView" />
+        android:layout_below="@+id/ingredientsText"
+        android:paddingTop="10px" />
 
     <ImageView
         android:id="@+id/recipeImage"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -26,61 +33,79 @@
         android:layout_marginBottom="657dp"
         android:layout_marginEnd="360dp"
         android:layout_marginRight="360dp"
-        app:srcCompat="@drawable/remlogo" />
+        app:srcCompat="@drawable/remlogosmall" />
 
     <TextView
         android:id="@+id/tagsText"
         android:layout_width="350px"
-        android:layout_height="wrap_content"
+        android:layout_height="100px"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/prepTimeText"
+        android:layout_marginTop="200px"
         android:text="Tags: "
         android:textColor="@android:color/black"
-        android:textSize="22sp"
-        android:layout_below="@+id/prepTimeText"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="31dp"
-        android:layout_alignBottom="@+id/recipeImage" />
+        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/prepTimeText"
         android:layout_width="350px"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/recipeNameText"
         android:layout_marginTop="31dp"
         android:text="Total Preparation Time"
         android:textColor="@android:color/black"
-        android:textSize="22sp"
-        android:layout_below="@+id/recipeNameText"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/recipeNameText"
         android:layout_width="350px"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:layout_marginTop="29dp"
         android:text="Recipe Name"
         android:textColor="@android:color/black"
-        android:textSize="22sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:textSize="22sp" />
 
     <Button
         android:id="@+id/btnSlidesView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="150px"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/prepTimeText"
+        android:layout_alignStart="@+id/prepTimeText"
+        android:layout_below="@+id/prepTimeText"
+        android:layout_marginTop="10px"
+        android:text=" Slide Show Style" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="150px"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnSlidesView"
+        android:layout_alignBottom="@+id/btnSlidesView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:text="Export Recipe" />
 
     <TextView
         android:id="@+id/ingredientsText"
         android:layout_width="wrap_content"
         android:layout_height="100px"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tagsText"
         android:text="Ingredients Here"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:layout_above="@+id/stepListView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:textSize="20sp" />
 
 </RelativeLayout>
