@@ -67,7 +67,7 @@ public class traditionalRecipe extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 RecipeObj recipe = MainActivity.mainDB.getRecipe(recipeToShow.getId());
-                MainActivity.recipeToJson(recipe);
+                MainActivity.exportRecipe(recipe, "recipe_" + recipe.getName());
             }
         });
 

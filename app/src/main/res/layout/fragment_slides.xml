@@ -17,17 +17,17 @@
         android:layout_alignParentStart="true">
 
         <TextView
+            android:id="@+id/textTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/textTitle" />
+            android:text="Large Text" />
 
         <TextView
+            android:id="@+id/textDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textInner" />
+            android:text="New Text" />
 
         <TextView
             android:id="@+id/textHeat"

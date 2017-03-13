@@ -14,6 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -74,6 +77,9 @@ public class SlidesActivity extends AppCompatActivity {
         public RecipeObj recipe;
         public RecipeStepObj step;
 
+        private TextView textTime;
+        private Button timerBtn;
+
         public SlidesFragment() {
         }
 
@@ -91,19 +97,90 @@ public class SlidesActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_slides, container, false);
             TextView textTitle = (TextView) rootView.findViewById(R.id.textTitle);
-            TextView textInner = (TextView) rootView.findViewById(R.id.textInner);
+            TextView textDescription = (TextView) rootView.findViewById(R.id.textDescription);
+            TextView textHeat = (TextView) rootView.findViewById(R.id.textHeat);
+            textTime = (TextView) rootView.findViewById(R.id.textTime);
+            timerBtn = (Button) rootView.findViewById(R.id.timerBtn);
+            timerBtn.setText("Start Timer");
+
+            timerBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startTimer();
+                }
+            });
 
             if (step == null) {
                 textTitle.setText(recipe.getName());
-                textInner.setText(recipe.getDescription());
+                textDescription.setText(recipe.getDescription());
+                textHeat.setVisibility(View.GONE);
+                textTime.setVisibility(View.GONE);
+                timerBtn.setVisibility(View.GONE);
             }
 
             else {
                 textTitle.setText("Step " + step.getStepOrderNumber());
-                textInner.setText(step.getStepDesc());
+                textDescription.setText(step.getStepDesc());
+                switch (step.getAttType())
+                {
+                    case "Details":
+                        textHeat.setVisibility(View.GONE);
+                        textTime.setVisibility(View.GONE);
+                        timerBtn.setVisibility(View.GONE);
+                        break;
+
+                    case "Timer":
+                        textHeat.setVisibility(View.GONE);
+                        textTime.setText("" + step.getTimeOfStep());
+                        break;
+
+                    case "Oven":
+                        textHeat.setText(step.getHeatLevel());
+                        textTime.setText("" + step.getTimeOfStep());
+                        break;
+
+                    case "Microwave":
+                        textHeat.setText(step.getHeatLevel());
+                        textTime.setText("" + step.getTimeOfStep());
+                        break;
+                }
             }
 
             return rootView;
+        }
+
+        public void updateTime(double time) {
+            if (time > step.getTimeOfStep() * 60) {
+                stopTimer();
+                return;
+            }
+            int seconds = (int)(step.getTimeOfStep() * 60 - time);
+            int minutes = seconds / 60;
+            seconds = seconds % 60;
+            String secondsString = "" + seconds;
+            if (secondsString.length() < 2)
+                secondsString = "0" + secondsString;
+            textTime.setText(minutes + ":" + secondsString);
+        }
+
+        private TimerTask currentTimer;
+        public void startTimer() {
+            currentTimer = new TimerTask(new TimerCallback() {
+                @Override
+                public void update(double time) {
+                    updateTime(time);
+                }
+            });
+            currentTimer.execute(0.0);
+            timerBtn.setText("Timer running");
+            timerBtn.setEnabled(false);
+        }
+
+        public void stopTimer() {
+            timerBtn.setText("Start Timer");
+            currentTimer = null;
+
+            // TODO: notification if I feel like it
         }
     }
 
