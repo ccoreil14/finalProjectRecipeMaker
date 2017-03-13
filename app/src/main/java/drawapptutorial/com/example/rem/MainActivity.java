@@ -176,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 stepJson.put("time", step.getTimeOfStep());
                 stepJson.put("heatLevel", step.getHeatLevel());
                 stepJson.put("orderNumber", step.getStepOrderNumber());
+                stepJson.put("attType", step.getAttType());
 
                 stepsJson.put(stepJson);
             }
@@ -258,8 +259,9 @@ public class MainActivity extends AppCompatActivity {
                 int time = stepJson.optInt("time");
                 String heatLevel = stepJson.optString("heatLevel");
                 int orderNumber = stepJson.optInt("orderNumber");
+                String attType = stepJson.optString("attType", "");
 
-                RecipeStepObj step = new RecipeStepObj(0, desc, time, heatLevel, orderNumber);
+                RecipeStepObj step = new RecipeStepObj(0, desc, time, heatLevel, orderNumber, attType);
                 stepsOutput.add(step);
             }
             catch (JSONException e) {
