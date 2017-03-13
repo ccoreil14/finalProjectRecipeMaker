@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="50px"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -9,42 +10,52 @@
     tools:context=".SlidesActivity$SlidesFragment">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
 
         <TextView
+            android:id="@+id/textTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Large Text"
-            android:id="@+id/textTitle" />
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="50sp" />
 
         <TextView
+            android:id="@+id/textInner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50px"
             android:text="New Text"
-            android:id="@+id/textInner" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textHeat"
-            android:layout_width="match_parent"
+            android:layout_width="103dp"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_marginTop="50px"
+            android:text="TextView"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textTime"
-            android:layout_width="match_parent"
+            android:layout_width="102dp"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_marginTop="50px"
+            android:text="TextView"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/timerBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Start Timer" />
+            android:layout_marginTop="60px"
+            android:text="Start Timer"
+            android:textSize="30sp" />
     </LinearLayout>
 </RelativeLayout>
