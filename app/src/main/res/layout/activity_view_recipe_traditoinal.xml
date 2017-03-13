@@ -77,22 +77,21 @@
         android:id="@+id/btnSlidesView"
         android:layout_width="150px"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/prepTimeText"
-        android:layout_alignStart="@+id/prepTimeText"
+        android:text=" Slide Show Style"
         android:layout_below="@+id/prepTimeText"
-        android:layout_marginTop="10px"
-        android:text=" Slide Show Style" />
+        android:layout_alignLeft="@+id/prepTimeText"
+        android:layout_alignStart="@+id/prepTimeText" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/exportRecipeBtn"
         android:layout_width="150px"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/btnSlidesView"
         android:layout_alignBottom="@+id/btnSlidesView"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="18dp"
-        android:layout_marginRight="18dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
         android:text="Export Recipe" />
 
     <TextView

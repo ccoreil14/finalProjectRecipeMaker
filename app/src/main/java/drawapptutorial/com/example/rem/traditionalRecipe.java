@@ -20,6 +20,7 @@ public class traditionalRecipe extends AppCompatActivity {
     List<RecipeStepObj> stepsToShow;
     ArrayAdapter<RecipeStepObj> adapter;
     Button btnSlides;
+    Button btnExport;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,17 @@ public class traditionalRecipe extends AppCompatActivity {
                 startActivity(slidesViewIntent);
             }
         });
+
+        btnExport = (Button) findViewById(R.id.exportRecipeBtn);
+        btnExport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RecipeObj recipe = MainActivity.mainDB.getRecipe(recipeToShow.getId());
+                MainActivity.recipeToJson(recipe);
+            }
+        });
+
+
 
         stepsToShow = MainActivity.stepDB.getRecipeStepsFromRecipeId(Integer.parseInt(chosenRecipeID));
         adapter = new ArrayAdapter<RecipeStepObj>(this,R.layout.activity_listview,stepsToShow);
