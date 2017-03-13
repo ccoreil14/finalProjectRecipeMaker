@@ -28,19 +28,19 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="137dp">
+        android:layout_height="137dp"
+        android:orientation="horizontal">
 
         <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:inputType="textPersonName"
-            android:ems="10"
             android:id="@+id/addRecipeDescription"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="111dp"
+            android:layout_marginTop="10px"
+            android:ems="10"
+            android:gravity="top|left"
             android:hint="Recipe Description"
-            android:gravity="top|left"/>
+            android:inputType="textPersonName" />
     </LinearLayout>
 
     <LinearLayout
@@ -59,11 +59,11 @@
             android:hint="0" />
 
         <TextView
-            android:text="Minutes"
+            android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView4"
             android:layout_weight="1"
+            android:text="Minutes to Complete Recipe"
             android:textSize="30sp" />
 
     </LinearLayout>
@@ -75,7 +75,7 @@
         android:layout_weight="0.33">
 
         <LinearLayout
-            android:layout_width="190px"
+            android:layout_width="250px"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -102,9 +102,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
+            android:layout_width="250px"
             android:layout_height="match_parent"
-            android:layout_width="190px">
+            android:layout_marginLeft="10px"
+            android:orientation="vertical">
 
             <EditText
                 android:id="@+id/ingredientEditText"
@@ -128,9 +129,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
+            android:layout_width="250px"
             android:layout_height="match_parent"
-            android:layout_width="190px"
+            android:layout_marginLeft="10px"
+            android:orientation="vertical"
             android:weightSum="1">
 
             <Spinner
@@ -141,10 +143,10 @@
                 android:entries="@array/step_item_types" />
 
             <Button
-                android:text="Add New Step"
+                android:id="@+id/addStepBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/addStepBtn" />
+                android:text="Add New Step" />
 
             <ListView
                 android:id="@+id/stepListView"
