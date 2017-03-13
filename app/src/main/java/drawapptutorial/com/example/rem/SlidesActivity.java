@@ -120,7 +120,7 @@ public class SlidesActivity extends AppCompatActivity {
 
             else {
                 textTitle.setText("Step " + step.getStepOrderNumber());
-                textDescription.setText(step.getStepDesc());
+                textDescription.setText("Details: " + step.getStepDesc());
                 switch (step.getAttType())
                 {
                     case "Details":
@@ -131,17 +131,17 @@ public class SlidesActivity extends AppCompatActivity {
 
                     case "Timer":
                         textHeat.setVisibility(View.GONE);
-                        textTime.setText("" + step.getTimeOfStep());
+                        textTime.setText("Step time length: " + step.getTimeOfStep());
                         break;
 
                     case "Oven":
-                        textHeat.setText(step.getHeatLevel());
-                        textTime.setText("" + step.getTimeOfStep());
+                        textHeat.setText("Preheat oven to "+step.getHeatLevel() + " degrees fahrenheit.");
+                        textTime.setText("Cook for " + step.getTimeOfStep() + " minutes");
                         break;
 
                     case "Microwave":
-                        textHeat.setText(step.getHeatLevel());
-                        textTime.setText("" + step.getTimeOfStep());
+                        textHeat.setText("Cook it on "+ step.getHeatLevel());
+                        textTime.setText("Cook for " + step.getTimeOfStep() + " minutes");
                         break;
                 }
             }
