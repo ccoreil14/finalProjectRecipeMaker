@@ -46,7 +46,7 @@ public class RecipeStepObj {
         this.timeOfStep = timeOfStep;
         this.heatLevel = heatLevel;
         this.stepOrderNumber = stepOrderNumber;
-        this.attType = attType;
+        //this.attType = attType;
     }
 
     public void setId(int id) {
