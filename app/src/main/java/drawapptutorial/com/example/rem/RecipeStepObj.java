@@ -10,7 +10,7 @@ import java.util.List;
 
 public class RecipeStepObj {
     private int id;
-    private int recipeId;
+    private long recipeId;
     private String stepDesc;
     private int timeOfStep;
     private String heatLevel;
@@ -54,10 +54,10 @@ public class RecipeStepObj {
     }
     public int getId() {return this.id;}
 
-    public void setRecipeId(int id) {
+    public void setRecipeId(long id) {
         this.recipeId = id;
     }
-    public int getRecipeId() {return this.recipeId;}
+    public long getRecipeId() {return this.recipeId;}
 
     public void setStepDesc(String stepDesc) {
         this.stepDesc = stepDesc;

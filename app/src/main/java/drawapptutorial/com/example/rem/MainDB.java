@@ -85,6 +85,7 @@ public class MainDB extends SQLiteOpenHelper {
         }
 
         RecipeObj information = new RecipeObj(
+                id,
                 cursor.getString(1),
                 cursor.getString(2),
                 Integer.parseInt(cursor.getString(3)),

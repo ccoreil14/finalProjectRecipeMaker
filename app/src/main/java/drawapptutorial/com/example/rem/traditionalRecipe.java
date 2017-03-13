@@ -3,7 +3,9 @@ package drawapptutorial.com.example.rem;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,6 +19,7 @@ public class traditionalRecipe extends AppCompatActivity {
     ListView stepListView;
     List<RecipeStepObj> stepsToShow;
     ArrayAdapter<RecipeStepObj> adapter;
+    Button btnSlides;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +27,7 @@ public class traditionalRecipe extends AppCompatActivity {
         setContentView(R.layout.activity_view_recipe_traditoinal);
         String chosenRecipeID = getIntent().getStringExtra("recipeID");
 
-        RecipeObj recipeToShow = MainActivity.mainDB.getRecipe(Integer.parseInt(chosenRecipeID));
+        final RecipeObj recipeToShow = MainActivity.mainDB.getRecipe(Integer.parseInt(chosenRecipeID));
 
         recipeNameText = (TextView) findViewById(R.id.recipeNameText);
         recipeNameText.setText(recipeToShow.getName());
@@ -48,6 +51,15 @@ public class traditionalRecipe extends AppCompatActivity {
         }
         tagsText.setText("Tags: " + tagsFormat);
 
+        btnSlides = (Button) findViewById(R.id.btnSlidesView);
+        btnSlides.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent slidesViewIntent = new Intent(traditionalRecipe.this, SlidesActivity.class);
+                slidesViewIntent.putExtra("recipeJson", MainActivity.recipeToJson(recipeToShow).toString());
+                startActivity(slidesViewIntent);
+            }
+        });
 
         stepsToShow = MainActivity.stepDB.getRecipeStepsFromRecipeId(Integer.parseInt(chosenRecipeID));
         adapter = new ArrayAdapter<RecipeStepObj>(this,R.layout.activity_listview,stepsToShow);

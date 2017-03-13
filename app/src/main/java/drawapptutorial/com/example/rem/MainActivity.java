@@ -98,13 +98,8 @@ public class MainActivity extends AppCompatActivity {
                     });
                 }
 
-
-
-
-
             @Override
             public void afterTextChanged(Editable s) {
-
 
             }
         });
@@ -153,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public JSONObject recipeToJson(RecipeObj obj) {
+    public static JSONObject recipeToJson(RecipeObj obj) {
         JSONObject result = new JSONObject();
 
         try {
@@ -220,9 +215,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void loadImportedRecipe(String string) {
+    public static RecipeObj jsonToRecipe(String json, List<RecipeStepObj> stepsOutput) {
         try {
-            JSONObject recipeJson = new JSONObject(string);
+            JSONObject recipeJson = new JSONObject(json);
 
             String name = recipeJson.optString("name");
             String description = recipeJson.optString("description");
@@ -244,15 +239,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            long recipeId = mainDB.addRecipe(new RecipeObj(name, description, totalTime, tagsArray, ingredientsArray));
-            loadImportedRecipeSteps(recipeId, recipeJson.getJSONArray("steps"));
+            RecipeObj result = new RecipeObj(name, description, totalTime, tagsArray, ingredientsArray);
+            jsonToRecipeSteps(recipeJson.getJSONArray("steps"), stepsOutput);
+
+            return result;
         }
         catch (JSONException e) {
             Log.e("RecipeObj", "Invalid format when importing recipe");
         }
+        return null;
     }
 
-    private void loadImportedRecipeSteps(long recipeId, JSONArray stepsJson) {
+    private static void jsonToRecipeSteps(JSONArray stepsJson, List<RecipeStepObj> stepsOutput) {
         for (int i = 0; i < stepsJson.length(); i++) {
             try {
                 JSONObject stepJson = stepsJson.getJSONObject(i);
@@ -261,12 +259,26 @@ public class MainActivity extends AppCompatActivity {
                 String heatLevel = stepJson.optString("heatLevel");
                 int orderNumber = stepJson.optInt("orderNumber");
 
-                RecipeStepObj step = new RecipeStepObj((int)recipeId, desc, time, heatLevel, orderNumber);
-                stepDB.addStep(step);
+                RecipeStepObj step = new RecipeStepObj(0, desc, time, heatLevel, orderNumber);
+                stepsOutput.add(step);
             }
             catch (JSONException e) {
                 Log.e("RecipeObj", "Invalid format when importing recipeStep");
             }
+        }
+    }
+
+    private void loadImportedRecipe(String string) {
+        ArrayList<RecipeStepObj> steps = new ArrayList<>();
+        RecipeObj recipe = jsonToRecipe(string, steps);
+
+        if (recipe == null)
+            return;
+
+        long recipeId = mainDB.addRecipe(recipe);
+        for (RecipeStepObj step : steps) {
+            step.setRecipeId(recipeId);
+            stepDB.addStep(step);
         }
     }
 
@@ -296,6 +308,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-
 }
