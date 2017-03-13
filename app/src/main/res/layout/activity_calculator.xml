@@ -5,26 +5,26 @@
 
     <Spinner
         android:id="@+id/fromSpinner"
-        android:layout_width="100px"
+        android:layout_width="200px"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/userInput"
+        android:layout_marginTop="90dp"
+        android:textAlignment="center"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/userInput"
-        android:layout_marginTop="92dp"
-        android:textAlignment="center" />
+        android:layout_toLeftOf="@+id/measurement2"
+        android:layout_toStartOf="@+id/measurement2"
+        android:layout_marginRight="21dp"
+        android:layout_marginEnd="21dp" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="58dp"
-        android:layout_marginRight="58dp"
-        android:layout_marginTop="88dp"
-        android:layout_toLeftOf="@+id/userInput"
-        android:layout_toStartOf="@+id/userInput"
         android:text="From"
         android:textColor="@android:color/black"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_above="@+id/userInput"
+        android:layout_alignLeft="@+id/userInput"
+        android:layout_alignStart="@+id/userInput" />
 
     <TextView
         android:id="@+id/textView2"
@@ -41,7 +41,7 @@
 
     <Spinner
         android:id="@+id/toSpinner"
-        android:layout_width="100px"
+        android:layout_width="200px"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/fromSpinner"
         android:layout_marginLeft="23dp"
@@ -52,19 +52,18 @@
 
     <EditText
         android:id="@+id/userInput"
-        android:layout_width="50px"
+        android:layout_width="200px"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/fromSpinner"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
         android:layout_marginTop="141dp"
+        android:layout_toLeftOf="@+id/convertBtn"
         android:hint="2"
         android:inputType="numberDecimal"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:layout_below="@+id/fromSpinner"
-        android:layout_toLeftOf="@+id/convertBtn"
-        android:layout_toStartOf="@+id/convertBtn"
-        android:layout_marginRight="28dp"
-        android:layout_marginEnd="28dp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/measurement1"
@@ -94,16 +93,16 @@
 
     <TextView
         android:id="@+id/conversionOutput"
-        android:layout_width="50px"
+        android:layout_width="200px"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/userInput"
+        android:layout_alignStart="@+id/userInput"
+        android:layout_below="@+id/userInput"
         android:layout_marginTop="100dp"
-        android:hint="2"
+        android:hint="Converted Value"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:layout_below="@+id/userInput"
-        android:layout_alignLeft="@+id/userInput"
-        android:layout_alignStart="@+id/userInput" />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/returnBtn"
