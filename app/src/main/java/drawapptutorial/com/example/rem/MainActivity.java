@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
 //    private RadioButton searchTagsBtn;
     private boolean isSearchByName = true;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -190,11 +188,11 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
-    public void exportRecipe(RecipeObj obj, String filename) {
+    public static void exportRecipe(RecipeObj obj, String filename) {
         JSONObject recipeJson = recipeToJson(obj);
 
         File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
-        File file = new File(directory, filename + ".json");
+        File file = new File(directory, filename + ".txt");
         FileWriter writer = null;
 
         Log.i("MainActivity", file.getAbsolutePath());
@@ -270,7 +268,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void loadImportedRecipe(String string) {
+    private static void loadImportedRecipe(String string) {
         ArrayList<RecipeStepObj> steps = new ArrayList<>();
         RecipeObj recipe = jsonToRecipe(string, steps);
 

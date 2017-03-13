@@ -27,7 +27,7 @@
             android:textSize="50sp" />
 
         <TextView
-            android:id="@+id/textInner"
+            android:id="@+id/textDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50px"
