@@ -11,11 +11,13 @@
     <ListView
         android:id="@+id/stepListView"
         android:layout_width="match_parent"
-        android:layout_height="550px"
-        android:layout_alignParentBottom="true"
+        android:layout_height="500px"
+        android:layout_alignEnd="@+id/exportRecipeBtn"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/exportRecipeBtn"
         android:layout_below="@+id/ingredientsText"
+        android:background="@color/colorPrimary"
         android:paddingTop="10px" />
 
     <ImageView

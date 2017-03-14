@@ -69,8 +69,10 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="10px"
+        android:background="@color/colorPrimary"
         android:onClick="convCalc"
-        android:text="@string/ccBtnText" />
+        android:text="@string/ccBtnText"
+        android:textColor="@color/colorAccent" />
 
     <Button
         android:id="@+id/button2"
@@ -80,8 +82,10 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/searchRadioGroup"
         android:layout_marginTop="10px"
+        android:background="@color/colorPrimary"
         android:onClick="addNew"
-        android:text="@string/recipeBtnText" />
+        android:text="@string/recipeBtnText"
+        android:textColor="@color/colorAccent" />
 
     <ListView
         android:id="@+id/recipeList"
@@ -90,7 +94,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30px"
-        android:background="#DDD"
+        android:background="@color/colorPrimary"
         android:isScrollContainer="false" />
 
 </LinearLayout>
