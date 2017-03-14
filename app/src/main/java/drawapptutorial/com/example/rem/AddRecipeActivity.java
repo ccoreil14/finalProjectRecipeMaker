@@ -215,7 +215,7 @@ public class AddRecipeActivity extends AppCompatActivity implements View.OnClick
                 break;
 
             case "Timer":
-                stepDesc = addStepTimerDialog.getText().toString();
+                stepDesc = addStepDescDialog.getText().toString();
                 timerNum = Integer.parseInt(addStepTimerDialog.getText().toString());
                 addStepDescDialog.setText("");
                 addStepTimerDialog.setText("");

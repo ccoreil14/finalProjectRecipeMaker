@@ -92,6 +92,7 @@
                 android:id="@+id/addTagBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
                 android:text="Add New Tag" />
 
             <ListView
@@ -120,6 +121,7 @@
                 android:id="@+id/addIngredientBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
                 android:text="Add New Ingredient" />
 
             <ListView
@@ -146,6 +148,7 @@
                 android:id="@+id/addStepBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
                 android:text="Add New Step" />
 
             <ListView
